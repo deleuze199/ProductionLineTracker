@@ -7,15 +7,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * This is a assembly production tracker.
  * @author Benjamin Deleuze
- * @brief
+ * @version a.1.0
  */
 public class Main extends Application {
   /**
-   * Start of JavaFX program
+   * Start of JavaFX program.
    *
-   * @param primaryStage first thing the user sees
-   * @throws Exception
+   * @param primaryStage first thing the user sees.
+   * @throws Exception for any issue.
    */
   @Override
   public void start(Stage primaryStage) throws Exception {

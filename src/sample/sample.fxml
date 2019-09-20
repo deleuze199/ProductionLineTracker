@@ -5,6 +5,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="350.0" prefWidth="350.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.202" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="350.0" prefWidth="350.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <columnConstraints>
         <ColumnConstraints />
     </columnConstraints>
@@ -26,8 +28,8 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="320.0" prefWidth="468.0">
                             <children>
-                                <Button fx:id="pLine" layoutX="253.0" layoutY="279.0" mnemonicParsing="false" text="Add Product" />
-                                <GridPane layoutX="12.0" layoutY="20.0" prefHeight="101.0" prefWidth="325.0">
+                                <Button fx:id="pLine" layoutX="242.0" layoutY="101.0" mnemonicParsing="false" text="Add Product" />
+                                <GridPane layoutX="12.0" layoutY="4.0" prefHeight="93.0" prefWidth="325.0">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -46,6 +48,13 @@
                                         <ChoiceBox prefHeight="25.0" prefWidth="164.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     </children>
                                 </GridPane>
+                        <Label layoutX="12.0" layoutY="115.0" text="Existing Products" />
+                        <TableView layoutX="6.0" layoutY="140.0" prefHeight="167.0" prefWidth="337.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="C1" />
+                            <TableColumn prefWidth="75.0" text="C2" />
+                          </columns>
+                        </TableView>
                             </children>
                         </AnchorPane>
                     </content>

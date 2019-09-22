@@ -11,9 +11,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 
-
-
-
 /**
  * This is the Controller Class for the UI part of the program.
  *
@@ -55,7 +52,6 @@ public class Controller implements Initializable {
       e.printStackTrace();
     }
     System.out.println("Product Line Button");
-
   }
 
   /**

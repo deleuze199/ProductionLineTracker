@@ -1,9 +1,7 @@
 package sample;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -55,6 +53,29 @@ public class Main extends Application {
       stmt = conn.createStatement();
       stmt.close();
       conn.close();
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
+  }
+  public static void executeSQL(String SQL){
+    // Database driver and location
+    final String Jdbc_Driver = "org.h2.Driver";
+    final String db_Url = "jdbc:h2:./res/h2";
+    // Database credentials
+    final String user = "";
+    final String pass = "";
+    // instance of class connection
+    Connection conn;
+    try {
+      // Register JDBC driver
+      Class.forName(Jdbc_Driver);
+      // Create a connection to database
+      conn = DriverManager.getConnection(db_Url, user, pass);
+      PreparedStatement preparedstmt = conn.prepareStatement(SQL);
+      // Execute SQL string
+      preparedstmt.execute();
+      conn.close();
+      preparedstmt.close();
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
     }

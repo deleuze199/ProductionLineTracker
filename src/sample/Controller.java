@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
 
 /**
  * This is the Controller Class for the UI part of the program.
@@ -20,37 +21,22 @@ import javafx.scene.control.ComboBox;
 public class Controller implements Initializable {
   @FXML private ComboBox comboBox;
   @FXML private ChoiceBox choiceBox;
+  @FXML private TextField productName_tf;
+  @FXML private TextField manufacturer_tf;
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
    * method adds the product to the database.
    */
   public void productLineButtonHandler() {
-    // Database driver and location
-    final String Jdbc_Driver = "org.h2.Driver";
-    final String db_Url = "jdbc:h2:./res/h2";
-    // Database credentials
-    final String user = "";
-    final String pass = "";
-    // instance of class connection
-    Connection conn;
-    try {
-      // Register JDBC driver
-      Class.forName(Jdbc_Driver);
-      // Create a connection to database
-      conn = DriverManager.getConnection(db_Url, user, pass);
-      // SQL String to add a product to the database
-      String insertProductLine =
-          "INSERT INTO Product(type, manufacturer, name) VALUES ( 'AUDIO', 'Apple', 'iPod' )";
-      // Object to add SQL String as argument to PreparedStatement
-      PreparedStatement preparedstmt = conn.prepareStatement(insertProductLine);
-      // Execute SQL string
-      preparedstmt.execute();
-      conn.close();
-      preparedstmt.close();
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    }
+    //Getting user input
+    String productName = productName_tf.getText();
+    String manufacturer = manufacturer_tf.getText();
+    String productType = choiceBox.getAccessibleText();
+    // SQL String to add a product to the database
+    String insertProductLine = "INSERT INTO Product(type, manufacturer, name) " +
+       "VALUES ( '"+ productType +"', '" + manufacturer +"', '"+ productName+"')";
+    Main.executeSQL(insertProductLine);
     System.out.println("Product Line Button");
   }
 

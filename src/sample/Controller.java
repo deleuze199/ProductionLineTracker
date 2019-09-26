@@ -58,7 +58,7 @@ public class Controller implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     // populate "Audio","Video","Other" in the ChoiceBox
-    choiceBox.getItems().addAll("Audio", "Video", "Other");
+    choiceBox.getItems().addAll("Audio", "Visual", "AudioMobile","VisualMobile");
     // populate numbers 1-10 in the ComboBox
     comboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
     comboBox.getSelectionModel().selectFirst();

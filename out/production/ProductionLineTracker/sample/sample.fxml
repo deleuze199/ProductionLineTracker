@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
@@ -16,7 +17,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<?import java.net.URL?>
 <GridPane alignment="center" hgap="10" prefHeight="350.0" prefWidth="350.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.221" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <columnConstraints>
         <ColumnConstraints />
@@ -52,10 +52,12 @@
                                     </children>
                                 </GridPane>
                                 <Label layoutX="12.0" layoutY="115.0" text="Existing Products" />
-                                <TableView layoutX="6.0" layoutY="140.0" prefHeight="167.0" prefWidth="337.0">
+                                <TableView fx:id="propduct_Table" layoutX="2.0" layoutY="140.0" prefHeight="173.0" prefWidth="345.0">
                                     <columns>
-                                        <TableColumn prefWidth="75.0" text="C1" />
-                                        <TableColumn prefWidth="75.0" text="C2" />
+                                        <TableColumn fx:id="col_ID" prefWidth="40.0" text="ID" />
+                                        <TableColumn fx:id="col_Name" prefWidth="101.0" text="Name" />
+                              <TableColumn fx:id="col_Manufacturer" prefWidth="101.0" text="Manufacturer" />
+                              <TableColumn fx:id="col_Type" prefWidth="101.5" text="Type" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -88,6 +90,6 @@
         </TabPane>
     </children>
     <stylesheets>
-        <URL value = "@plt.css"/>
+        <URL value="@plt.css" />
     </stylesheets>
 </GridPane>

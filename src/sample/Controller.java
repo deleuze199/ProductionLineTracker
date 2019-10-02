@@ -39,7 +39,7 @@ public class Controller implements Initializable {
     //Getting user input
     String productName = productName_tf.getText();
     String manufacturer = manufacturer_tf.getText();
-    String productType = choiceBox.getAccessibleText();
+    String productType = (String)choiceBox.getValue();
     // SQL String to add a product to the database
     String insertProductLine = "INSERT INTO Product(type, manufacturer, name) " +
        "VALUES ( '"+ productType +"', '" + manufacturer +"', '"+ productName+"')";

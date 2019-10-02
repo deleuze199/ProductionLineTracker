@@ -54,10 +54,10 @@
                                 <Label layoutX="12.0" layoutY="115.0" text="Existing Products" />
                                 <TableView fx:id="propduct_Table" layoutX="2.0" layoutY="140.0" prefHeight="173.0" prefWidth="345.0">
                                     <columns>
-                                        <TableColumn fx:id="col_ID" prefWidth="40.0" text="ID" />
+                                        <TableColumn fx:id="col_ID" prefWidth="30.0" text="ID" />
                                         <TableColumn fx:id="col_Name" prefWidth="101.0" text="Name" />
-                              <TableColumn fx:id="col_Manufacturer" prefWidth="101.0" text="Manufacturer" />
-                              <TableColumn fx:id="col_Type" prefWidth="101.5" text="Type" />
+                              <TableColumn fx:id="col_Manufacturer" prefWidth="103.0" text="Manufacturer" />
+                              <TableColumn fx:id="col_Type" prefWidth="110.0" text="Type" />
                                     </columns>
                                 </TableView>
                             </children>

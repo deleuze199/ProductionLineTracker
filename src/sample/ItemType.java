@@ -1,25 +1,29 @@
 package sample;
 
+/**
+ * ItemType is a enum that has the product type.
+ *
+ * @author Benjamin Deleuze
+ * @version a.1.0 9/28/2019
+ */
 public enum ItemType {
-  AUDIO,
-  VISUAL,
-  AUDIO_MOBILE,
-  VISUAL_MOBILE;
+  AUDIO("AU"),
+  VISUAL("VI"),
+  AUDIO_MOBILE("AM"),
+  VISUAL_MOBILE("VM");
   public String code;
-  ItemType(){
-    switch(this.toString()){
-      case "AUDIO":
-        code = "AU";
-        break;
-      case "VISUAL":
-        code = "VI";
-        break;
-      case "AUDIO_MOBILE":
-        code = "AM";
-        break;
-      case "VISUAL_MOBILE":
-        code = "VM";
-        break;
-    }
+
+  /** This is the constructor of the ItemType enum and is used to set the String code. */
+  ItemType(String code) {
+    this.code = code;
+  }
+
+  /**
+   * This is a getter for the code string.
+   *
+   * @return code of the product type
+   */
+  public String code() {
+    return code;
   }
 }

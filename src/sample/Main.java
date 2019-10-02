@@ -30,6 +30,11 @@ public class Main extends Application {
     primaryStage.show();
   }
 
+  /**
+   * This is where the program begins.
+   *
+   * @param args
+   */
   public static void main(String[] args) {
     initializeDB();
     launch(args);
@@ -57,7 +62,13 @@ public class Main extends Application {
       e.printStackTrace();
     }
   }
-  public static void executeSQL(String SQL){
+
+  /**
+   * This method executes a prepared sql statement.
+   *
+   * @param sql is a String that represents the sql statment that will be executed
+   */
+  public static void executeSql(String sql) {
     // Database driver and location
     final String Jdbc_Driver = "org.h2.Driver";
     final String db_Url = "jdbc:h2:./res/h2";
@@ -71,7 +82,7 @@ public class Main extends Application {
       Class.forName(Jdbc_Driver);
       // Create a connection to database
       conn = DriverManager.getConnection(db_Url, user, pass);
-      PreparedStatement preparedstmt = conn.prepareStatement(SQL);
+      PreparedStatement preparedstmt = conn.prepareStatement(sql);
       // Execute SQL string
       preparedstmt.execute();
       conn.close();

@@ -36,14 +36,21 @@ public class Controller implements Initializable {
    * method adds the product to the database.
    */
   public void productLineButtonHandler() {
-    //Getting user input
+    // Getting user input
     String productName = productName_tf.getText();
     String manufacturer = manufacturer_tf.getText();
     String productType = choiceBox.getValue().toString();
     // SQL String to add a product to the database
-    String insertProductLine = "INSERT INTO Product(type, manufacturer, name) " +
-       "VALUES ( '"+ productType +"', '" + manufacturer +"', '"+ productName+"')";
-    Main.executeSQL(insertProductLine);
+    final String insertProductLine =
+        "INSERT INTO Product(type, manufacturer, name) "
+            + "VALUES ( '"
+            + productType
+            + "', '"
+            + manufacturer
+            + "', '"
+            + productName
+            + "')";
+    Main.executeSql(insertProductLine);
     System.out.println("Product Line Button");
   }
 
@@ -56,8 +63,8 @@ public class Controller implements Initializable {
   }
 
   /**
-   * The initialize method populates numbers 1-10 in the ComboBox and populates
-   * "Audio","Video","Other" in the ChoiceBox.
+   * The initialize method populates numbers 1-10 in the ComboBox and populates the ItemType enum
+   * class into ChoiceBox.
    *
    * @param location is the location of the database.
    * @param resources is the reference to the resources.
@@ -65,7 +72,7 @@ public class Controller implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     // populate ItemType enum types in the ChoiceBox
-    for(ItemType cb : ItemType.values()){
+    for (ItemType cb : ItemType.values()) {
       choiceBox.getItems().add(cb);
     }
     // populate numbers 1-10 in the ComboBox

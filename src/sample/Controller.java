@@ -25,11 +25,6 @@ public class Controller implements Initializable {
   @FXML private ChoiceBox choiceBox;
   @FXML private TextField productName_tf;
   @FXML private TextField manufacturer_tf;
-  @FXML private TableView<?> propduct_Table;
-  @FXML private TableColumn<?, ?> col_ID;
-  @FXML private TableColumn<?, ?> col_Name;
-  @FXML private TableColumn<?, ?> col_Manufacturer;
-  @FXML private TableColumn<?, ?> col_Type;
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This

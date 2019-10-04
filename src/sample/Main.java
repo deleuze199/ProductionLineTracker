@@ -33,7 +33,7 @@ public class Main extends Application {
   /**
    * This is where the program begins.
    *
-   * @param args
+   * @param args are the command line parameters
    */
   public static void main(String[] args) {
     initializeDB();

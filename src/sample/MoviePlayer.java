@@ -1,35 +1,58 @@
 package sample;
 
+/**
+ * The MoviePlayer class is for products what are of type visual and have multimedia controls.
+ *
+ * @author Benjamin Deleuze
+ * @version a.1.0 10/8/2019
+ */
 public class MoviePlayer extends Product implements MultimediaControl {
   private Screen screen;
   private MonitorType monitorType;
 
+  /**
+   * This is the constructor for the MoviePlayer class.
+   *
+   * @param name is the name of the product
+   * @param manufacturer is the manufacture of the product
+   * @param screen is the screen specs of the product
+   * @param monitorType is the monitor type of product
+   */
   MoviePlayer(String name, String manufacturer, Screen screen, MonitorType monitorType) {
     super(name, manufacturer, "VISUAL");
     this.screen = screen;
     this.monitorType = monitorType;
   }
 
+  /** This is to play the movie on the product. */
   @Override
   public void play() {
     System.out.println("Playing movie");
   }
 
+  /** This is to stop the movie on the product. */
   @Override
   public void stop() {
     System.out.println("Stopping movie");
   }
 
+  /** This is to go to the previous movie on the product. */
   @Override
   public void previous() {
     System.out.println("Previous movie");
   }
 
+  /** This is to go to the next movie on the product. */
   @Override
   public void next() {
     System.out.println("Next movie");
   }
 
+  /**
+   * This method returns the specs of the product.
+   *
+   * @return String of base classes toString method, screen, and monitor
+   */
   public String toString() {
     return super.toString() + "\nScreen: " + screen.toString() + "\nMonitor Type: " + monitorType;
   }

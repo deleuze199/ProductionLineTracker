@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * The MoviePlayer class is for products what are of type visual and have multimedia controls.

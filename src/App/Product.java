@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * This is the Product abstract class for each product logged into the system.

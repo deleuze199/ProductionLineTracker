@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * ItemType is a enum that has the product type.

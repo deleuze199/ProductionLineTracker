@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * MonitorType enum shows either LXD or LED for the monitor.

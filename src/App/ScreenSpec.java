@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /** The ScreenSpec interface has the methods to get the products screen specs. */
 public interface ScreenSpec {

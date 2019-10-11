@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * The Screen class sets and gets the screen specs.

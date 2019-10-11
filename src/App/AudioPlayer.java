@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * The MultimediaControl interface is to declare the methods used for the items, on this product

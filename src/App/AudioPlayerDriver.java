@@ -1,4 +1,4 @@
-package sample;
+package App;
 
 /**
  * Driver class for AudioPlayer that will test to see whether we can instantiate occurrences of it.

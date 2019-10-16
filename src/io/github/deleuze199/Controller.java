@@ -19,8 +19,8 @@ import javafx.scene.control.TextField;
  * @version a.1.0 9/21/2019
  */
 public class Controller implements Initializable {
-  @FXML private ComboBox <String> comboBox;
-  @FXML private ChoiceBox <ItemType> choiceBox;
+  @FXML private ComboBox<String> comboBox;
+  @FXML private ChoiceBox<ItemType> choiceBox;
   @FXML private TextField productName_tf;
   @FXML private TextField manufacturer_tf;
 
@@ -44,11 +44,12 @@ public class Controller implements Initializable {
       conn = DriverManager.getConnection(db_Url, user, pass);
       String productType = choiceBox.getValue().toString();
       // SQL String to add a product to the database
-      final String insertProductLine = "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
+      final String insertProductLine =
+          "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
       PreparedStatement preparedstmt = conn.prepareStatement(insertProductLine);
       preparedstmt.setString(1, choiceBox.getValue().code());
-      preparedstmt.setString(2,manufacturer_tf.getText());
-      preparedstmt.setString(3,productName_tf.getText());
+      preparedstmt.setString(2, manufacturer_tf.getText());
+      preparedstmt.setString(3, productName_tf.getText());
       // Execute SQL string
       preparedstmt.execute();
       conn.close();

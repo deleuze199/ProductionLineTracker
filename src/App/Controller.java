@@ -1,6 +1,10 @@
 package App;
 
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,8 +19,8 @@ import javafx.scene.control.TextField;
  * @version a.1.0 9/21/2019
  */
 public class Controller implements Initializable {
-  @FXML private ComboBox comboBox;
-  @FXML private ChoiceBox choiceBox;
+  @FXML private ComboBox <String> comboBox;
+  @FXML private ChoiceBox <ItemType> choiceBox;
   @FXML private TextField productName_tf;
   @FXML private TextField manufacturer_tf;
 
@@ -25,22 +29,33 @@ public class Controller implements Initializable {
    * method adds the product to the database.
    */
   public void productLineButtonHandler() {
-    // Getting user input
-    String productName = productName_tf.getText();
-    String manufacturer = manufacturer_tf.getText();
-    String productType = choiceBox.getValue().toString();
-    // SQL String to add a product to the database
-    final String insertProductLine =
-        "INSERT INTO Product(type, manufacturer, name) "
-            + "VALUES ( '"
-            + productType
-            + "', '"
-            + manufacturer
-            + "', '"
-            + productName
-            + "')";
-    Main.executeSql(insertProductLine);
-    System.out.println("Product Line Button");
+    // Database driver and location
+    final String Jdbc_Driver = "org.h2.Driver";
+    final String db_Url = "jdbc:h2:./res/h2";
+    // Database credentials
+    final String user = "";
+    final String pass = "";
+    // instance of class connection
+    Connection conn;
+    try {
+      // Register JDBC driver
+      Class.forName(Jdbc_Driver);
+      // Create a connection to database
+      conn = DriverManager.getConnection(db_Url, user, pass);
+      String productType = choiceBox.getValue().toString();
+      // SQL String to add a product to the database
+      final String insertProductLine = "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
+      PreparedStatement preparedstmt = conn.prepareStatement(insertProductLine);
+      preparedstmt.setString(1, choiceBox.getValue().code());
+      preparedstmt.setString(2,manufacturer_tf.getText());
+      preparedstmt.setString(3,productName_tf.getText());
+      // Execute SQL string
+      preparedstmt.execute();
+      conn.close();
+      preparedstmt.close();
+    } catch (ClassNotFoundException | SQLException e) {
+      e.printStackTrace();
+    }
   }
 
   /**

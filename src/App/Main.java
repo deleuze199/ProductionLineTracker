@@ -63,32 +63,4 @@ public class Main extends Application {
     }
   }
 
-  /**
-   * This method executes a prepared sql statement.
-   *
-   * @param sql is a String that represents the sql statment that will be executed
-   */
-  public static void executeSql(String sql) {
-    // Database driver and location
-    final String Jdbc_Driver = "org.h2.Driver";
-    final String db_Url = "jdbc:h2:./res/h2";
-    // Database credentials
-    final String user = "";
-    final String pass = "";
-    // instance of class connection
-    Connection conn;
-    try {
-      // Register JDBC driver
-      Class.forName(Jdbc_Driver);
-      // Create a connection to database
-      conn = DriverManager.getConnection(db_Url, user, pass);
-      PreparedStatement preparedstmt = conn.prepareStatement(sql);
-      // Execute SQL string
-      preparedstmt.execute();
-      conn.close();
-      preparedstmt.close();
-    } catch (ClassNotFoundException | SQLException e) {
-      e.printStackTrace();
-    }
-  }
 }

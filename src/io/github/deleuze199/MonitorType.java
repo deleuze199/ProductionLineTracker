@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /**
  * MonitorType enum shows either LXD or LED for the monitor.

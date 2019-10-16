@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /**
  * ItemType is a enum that has the product type.

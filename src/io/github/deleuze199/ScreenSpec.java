@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /** The ScreenSpec interface has the methods to get the products screen specs. */
 public interface ScreenSpec {

@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /**
  * The Item interface is to declare the methods used for items.

@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /**
  * The MoviePlayer class is for products what are of type visual and have multimedia controls.

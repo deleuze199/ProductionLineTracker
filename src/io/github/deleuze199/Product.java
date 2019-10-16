@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /**
  * This is the Product abstract class for each product logged into the system.

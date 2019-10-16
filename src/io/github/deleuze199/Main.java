@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 import java.sql.*;
 

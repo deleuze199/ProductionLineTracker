@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 /**
@@ -23,6 +24,7 @@ public class Controller implements Initializable {
   @FXML private ChoiceBox<ItemType> choiceBox;
   @FXML private TextField productName_tf;
   @FXML private TextField manufacturer_tf;
+  //@FXML private static TextArea productionLogTA;
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
@@ -66,6 +68,10 @@ public class Controller implements Initializable {
   public void produceBtnHandler() {
     System.out.println("Produce Button");
   }
+
+//  public static void setProductionLogTA(String productionLog) {
+//    productionLogTA.setText(productionLog);
+//  }
 
   /**
    * The initialize method populates numbers 1-10 in the ComboBox and populates the ItemType enum

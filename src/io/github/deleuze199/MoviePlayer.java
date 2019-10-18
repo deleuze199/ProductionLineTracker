@@ -1,5 +1,7 @@
 package io.github.deleuze199;
 
+import javafx.stage.Screen;
+
 /**
  * The MoviePlayer class is for products what are of type visual and have multimedia controls.
  *

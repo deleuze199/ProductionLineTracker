@@ -1,4 +1,4 @@
-package App;
+package io.github.deleuze199;
 
 /**
  * The Screen class sets and gets the screen specs.

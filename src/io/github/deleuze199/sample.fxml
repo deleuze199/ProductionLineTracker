@@ -81,7 +81,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
                             <children>
-                                <TextArea layoutX="5.0" layoutY="4.0" prefHeight="309.0" prefWidth="342.0" />
+                                <TextArea fx:id="productionLogTA" layoutX="5.0" layoutY="4.0" prefHeight="309.0" prefWidth="342.0" />
                             </children>
                         </AnchorPane>
                     </content>

@@ -61,7 +61,7 @@ public class AudioPlayer extends Product implements MultimediaControl {
   public void next() {
     System.out.println("Next");
   }
-
+  @Override
   /**
    * This is a method to set and return the product information as a string.
    *

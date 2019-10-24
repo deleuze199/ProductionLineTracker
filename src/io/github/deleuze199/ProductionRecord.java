@@ -24,7 +24,7 @@ public class ProductionRecord {
     this.productID = productID;
     productionNumber = 0;
     serialNumber = "0";
-    dateProduced = new Date(System.currentTimeMillis());
+    dateProduced = new Date(/*System.currentTimeMillis()*/ );
     // Controller.setProductionLogTA(toString());
     // productionLogTA.setText(toString);
   }
@@ -51,16 +51,18 @@ public class ProductionRecord {
   public String toString() {
     return "Prod. Num: "
         + productionNumber
-        + " Product ID: "
+        + "\nProduct ID: "
         + productID
-        + " Serial Num: "
+        + "\nSerial Num: "
         + serialNumber
-        + " Date: "
-        + dateProduced;
+        + "\nDate: "
+        + dateProduced
+        + "\n\n";
   }
 
   /**
    * This is a setter for the productionNumber field.
+   *
    * @param productionNumber
    */
   public void setProductionNum(int productionNumber) {
@@ -69,6 +71,7 @@ public class ProductionRecord {
 
   /**
    * This is the getter for the productionNumber field.
+   *
    * @return productionNumber
    */
   public int getProductionNum() {
@@ -76,6 +79,7 @@ public class ProductionRecord {
   }
   /**
    * This is a setter for the productID field.
+   *
    * @param productID
    */
   public void setProductID(int productID) {
@@ -84,6 +88,7 @@ public class ProductionRecord {
 
   /**
    * This is the getter for the productID field.
+   *
    * @return productID
    */
   public int getProductID() {
@@ -92,6 +97,7 @@ public class ProductionRecord {
 
   /**
    * This is a setter for the serialNumber field.
+   *
    * @param serialNumber
    */
   public void setSerialNum(String serialNumber) {
@@ -100,6 +106,7 @@ public class ProductionRecord {
 
   /**
    * This is the getter for the serialNumber field.
+   *
    * @return serialNumber
    */
   public String getSerialNum() {
@@ -108,6 +115,7 @@ public class ProductionRecord {
 
   /**
    * This is a setter for the dateProduced field.
+   *
    * @param dateProduced
    */
   public void setProdDate(Date dateProduced) {
@@ -116,6 +124,7 @@ public class ProductionRecord {
 
   /**
    * This is the getter for the dateProduced field.
+   *
    * @return dateProduced
    */
   public Date getProdDate() {

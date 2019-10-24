@@ -52,7 +52,7 @@
                                     </children>
                                 </GridPane>
                                 <Label layoutX="12.0" layoutY="115.0" text="Existing Products" />
-                                <TableView fx:id="propduct_Table" layoutX="2.0" layoutY="140.0" prefHeight="173.0" prefWidth="345.0">
+                                <TableView fx:id="propduct_Table" layoutX="2.0" layoutY="140.0" prefHeight="168.0" prefWidth="345.0">
                                     <columns>
                                         <TableColumn fx:id="col_ID" prefWidth="30.0" text="ID" />
                                         <TableColumn fx:id="col_Name" prefWidth="101.0" text="Name" />
@@ -68,7 +68,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <Button layoutX="205.0" layoutY="273.0" mnemonicParsing="false" onAction="#produceBtnHandler" text="Record Production" />
+                                <Button layoutX="205.0" layoutY="267.0" mnemonicParsing="false" onAction="#produceBtnHandler" text="Record Production" />
                                 <Label layoutX="14.0" layoutY="14.0" text="Choose Product" />
                                 <ListView layoutX="122.0" layoutY="14.0" prefHeight="186.0" prefWidth="216.0" />
                                 <Label layoutX="12.0" layoutY="221.0" text="Choose Quantity" />
@@ -80,9 +80,9 @@
                 <Tab text="Production Log">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="500.0">
-                            <children>
-                                <TextArea fx:id="productionLogTA" layoutX="5.0" layoutY="4.0" prefHeight="309.0" prefWidth="342.0" />
-                            </children>
+                     <children>
+                        <TextArea fx:id="productionLogTA" layoutX="4.0" layoutY="4.0" prefHeight="304.0" prefWidth="342.0" />
+                     </children>
                         </AnchorPane>
                     </content>
                 </Tab>

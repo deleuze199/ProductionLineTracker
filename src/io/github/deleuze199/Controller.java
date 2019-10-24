@@ -24,7 +24,7 @@ public class Controller implements Initializable {
   @FXML private ChoiceBox<ItemType> choiceBox;
   @FXML private TextField productName_tf;
   @FXML private TextField manufacturer_tf;
-  //@FXML private static TextArea productionLogTA;
+  @FXML private TextArea productionLogTA;
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
@@ -91,5 +91,8 @@ public class Controller implements Initializable {
     comboBox.getSelectionModel().selectFirst();
     // makes ComboBox editable
     comboBox.setEditable(true);
+
+    ProductionRecord pr = new ProductionRecord(38);
+    productionLogTA.setText(pr.toString());
   }
 }

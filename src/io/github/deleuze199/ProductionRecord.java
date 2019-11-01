@@ -36,12 +36,13 @@ public class ProductionRecord {
     this.productID = productID;
     this.serialNumber = serialNumber;
     this.dateProduced = dateProduced;
-    // Controller.setProductionLogTA(toString());
-    // productionLogTA.setText(toString);
   }
-  ProductionRecord(Product pr, int count) {
-    int serNum;
 
+  ProductionRecord(Product pr, int count) {
+    String serialNum = pr.getManufacturer().substring(0, 3) + pr.getType();
+    setSerialNum(serialNum);
+    dateProduced = new Date();
+    // still need to make auto-incrementing number
   }
 
   /**
@@ -53,13 +54,12 @@ public class ProductionRecord {
   public String toString() {
     return "Prod. Num: "
         + productionNumber
-        + "\nProduct ID: "
+        + " Product ID: "
         + productID
-        + "\nSerial Num: "
+        + " Serial Num: "
         + serialNumber
-        + "\nDate: "
-        + dateProduced
-        + "\n\n";
+        + " Date: "
+        + dateProduced;
   }
 
   /**

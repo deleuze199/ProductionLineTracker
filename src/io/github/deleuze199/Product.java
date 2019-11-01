@@ -8,7 +8,7 @@ package io.github.deleuze199;
  */
 abstract class Product implements Item {
   private int id;
-  private String type;
+  private ItemType type;
   private String manufacturer;
   private String name;
 
@@ -20,7 +20,7 @@ abstract class Product implements Item {
    * @param manufacturer is the manufacturer of the product
    * @param type is the type of the product
    */
-  Product(String name, String manufacturer, String type) {
+  Product(String name, String manufacturer, ItemType type) {
     this.name = name;
     this.manufacturer = manufacturer;
     this.type = type;
@@ -33,6 +33,16 @@ abstract class Product implements Item {
    */
   public int getId() {
     return id;
+  }
+
+  /**
+   * This is a getter for the Type.
+   *
+   * @return type of product as a String
+   */
+  public String getType() {
+    String typeS = type.code.toString();
+    return typeS;
   }
 
   /**
@@ -91,7 +101,7 @@ class Widget extends Product {
    * @param manufacturer is the manufacturer of the product
    * @param type is the type of the product
    */
-  Widget(String name, String manufacturer, String type) {
+  Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);
   }
 }

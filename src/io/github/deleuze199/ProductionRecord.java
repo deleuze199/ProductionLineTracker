@@ -24,9 +24,7 @@ public class ProductionRecord {
     this.productID = productID;
     productionNumber = 0;
     serialNumber = "0";
-    dateProduced = new Date(/*System.currentTimeMillis()*/ );
-    // Controller.setProductionLogTA(toString());
-    // productionLogTA.setText(toString);
+    dateProduced = new Date();
   }
   /**
    * Overloaded constructor for the ProductionRecord and sets the fields of the class.
@@ -40,6 +38,10 @@ public class ProductionRecord {
     this.dateProduced = dateProduced;
     // Controller.setProductionLogTA(toString());
     // productionLogTA.setText(toString);
+  }
+  ProductionRecord(Product pr, int count) {
+    int serNum;
+
   }
 
   /**

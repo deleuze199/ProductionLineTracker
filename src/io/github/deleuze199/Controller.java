@@ -5,13 +5,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * This is the Controller Class for the UI part of the program.
@@ -25,6 +27,15 @@ public class Controller implements Initializable {
   @FXML private TextField productName_tf;
   @FXML private TextField manufacturer_tf;
   @FXML private TextArea productionLogTA;
+  @FXML private TableView<Product> propductTable;
+  @FXML private TableColumn<?, ?> IdCol;
+  @FXML private TableColumn<?, ?> nameCol;
+  @FXML private TableColumn<?, ?> manufacturerCol;
+  @FXML private TableColumn<?, ?> typeCol;
+  @FXML private ListView<Product> produceList;
+
+
+  ArrayList<Product> productLine = new ArrayList<>();
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
@@ -54,6 +65,8 @@ public class Controller implements Initializable {
       preparedstmt.setString(3, productName_tf.getText());
       // Execute SQL string
       preparedstmt.execute();
+      // add product to productLine ArrayList
+      productLine.add();
       conn.close();
       preparedstmt.close();
     } catch (ClassNotFoundException | SQLException e) {
@@ -82,6 +95,14 @@ public class Controller implements Initializable {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    //Create ObservableList to display productLine Array in TableView
+    ObservableList<Product> producedProductes = FXCollections.observableArrayList();
+    IdCol.setCellValueFactory(new PropertyValueFactory("id"));
+    nameCol.setCellValueFactory(new PropertyValueFactory("name"));
+    manufacturerCol.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    typeCol.setCellValueFactory(new PropertyValueFactory("type"));
+    propductTable.setItems(producedProductes);
+    produceList.setItems(producedProductes);
     // populate ItemType enum types in the ChoiceBox
     for (ItemType cb : ItemType.values()) {
       choiceBox.getItems().add(cb);

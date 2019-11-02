@@ -21,7 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Benjamin Deleuze
  * @version a.1.0 9/21/2019
  */
-public class Controller implements Initializable {
+public class Controller {
   @FXML private ComboBox<String> comboBox;
   @FXML private ChoiceBox<ItemType> choiceBox;
   @FXML private TextField productName_tf;
@@ -34,7 +34,7 @@ public class Controller implements Initializable {
   @FXML private TableColumn<?, ?> typeCol;
   @FXML private ListView<Product> produceList;
 
-  ArrayList<Product> productLineAL = new ArrayList<>();
+  ObservableList<Product> productLine;
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
@@ -54,7 +54,6 @@ public class Controller implements Initializable {
       Class.forName(Jdbc_Driver);
       // Create a connection to database
       conn = DriverManager.getConnection(db_Url, user, pass);
-      String productType = choiceBox.getValue().toString();
       // SQL String to add a product to the database
       final String insertProductLine =
           "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
@@ -67,7 +66,7 @@ public class Controller implements Initializable {
       // add product to productLine ArrayList
       Widget productWidget =
           new Widget(productName_tf.getText(), manufacturer_tf.getText(), choiceBox.getValue());
-      productLineAL.add(productWidget);
+      productLine.add(productWidget);
       conn.close();
       preparedstmt.close();
     } catch (ClassNotFoundException | SQLException e) {
@@ -83,27 +82,20 @@ public class Controller implements Initializable {
     System.out.println("Produce Button");
   }
 
-  //  public static void setProductionLogTA(String productionLog) {
-  //    productionLogTA.setText(productionLog);
-  //  }
-
   /**
    * The initialize method populates numbers 1-10 in the ComboBox and populates the ItemType enum
    * class into ChoiceBox.
    *
-   * @param location is the location of the database.
-   * @param resources is the reference to the resources.
    */
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    // Create ObservableList to display productLine Array in TableView
-    ObservableList<Product> producedProductsOL = FXCollections.observableArrayList(productLineAL);
+  public void initialize() {
+    // make ObservableList display productLine Array in TableView
+    productLine = FXCollections.observableArrayList();
     IdCol.setCellValueFactory(new PropertyValueFactory("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory("name"));
-//    manufacturerCol.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-//    typeCol.setCellValueFactory(new PropertyValueFactory("type"));
-    propductTable.setItems(producedProductsOL);
-    produceList.setItems(producedProductsOL);
+    manufacturerCol.setCellValueFactory(new PropertyValueFactory("manufacturer"));
+    typeCol.setCellValueFactory(new PropertyValueFactory("type"));
+    propductTable.setItems(productLine);
+    produceList.setItems(productLine);
     // populate ItemType enum types in the ChoiceBox
     for (ItemType cb : ItemType.values()) {
       choiceBox.getItems().add(cb);

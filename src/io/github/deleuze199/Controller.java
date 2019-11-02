@@ -79,13 +79,13 @@ public class Controller {
    * method for now just prints to the console "Produce Button".
    */
   public void produceBtnHandler() {
-    System.out.println("Produce Button");
+    //    ProductionRecord Produce = new
+    // ProductionRecord(produceList.getSelectionModel().getSelectedItem(),)
   }
 
   /**
    * The initialize method populates numbers 1-10 in the ComboBox and populates the ItemType enum
    * class into ChoiceBox.
-   *
    */
   public void initialize() {
     // make ObservableList display productLine Array in TableView

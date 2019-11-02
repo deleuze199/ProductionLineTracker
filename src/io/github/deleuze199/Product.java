@@ -6,7 +6,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 9/28/2019
  */
-abstract class Product implements Item {
+public abstract class Product implements Item {
   private int id;
   private ItemType type;
   private String manufacturer;
@@ -27,12 +27,29 @@ abstract class Product implements Item {
   }
 
   /**
+   * This is a setter for the int id.
+   *
+   * @param id is the id of the product
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
+  /**
    * This is a getter for the int id.
    *
    * @return id is the product
    */
   public int getId() {
     return id;
+  }
+
+  /**
+   * This is a setter for the ItemType type.
+   *
+   * @param type is the ItemType of the product
+   */
+  public void setType(ItemType type) {
+    this.type = type;
   }
 
   /**

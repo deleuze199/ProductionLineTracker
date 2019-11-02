@@ -50,9 +50,9 @@
                                         <Label text="Item Type" GridPane.rowIndex="2" />
                                         <TextField fx:id="productName_tf" GridPane.columnIndex="1" />
                                         <TextField fx:id="manufacturer_tf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <ChoiceBox fx:id="choiceBox" prefHeight="27.0" prefWidth="64.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                        <ChoiceBox fx:id="choiceBox" prefHeight="27.0" prefWidth="139.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <GridPane.margin>
-                                    <Insets left="175.0" />
+                                    <Insets left="100.0" />
                                  </GridPane.margin></ChoiceBox>
                                     </children>
                                 </GridPane>
@@ -61,8 +61,8 @@
                                     <columns>
                                         <TableColumn fx:id="IdCol" prefWidth="47.0" text="ID" />
                                         <TableColumn fx:id="nameCol" prefWidth="174.0" text="Name" />
-                              <TableColumn fx:id="col_Manufacturer" prefWidth="185.0" text="Manufacturer" />
-                              <TableColumn fx:id="col_Type" prefWidth="84.0" text="Type" />
+                              <TableColumn fx:id="manufacturerCol" prefWidth="185.0" text="Manufacturer" />
+                              <TableColumn fx:id="typeCol" prefWidth="84.0" text="Type" />
                                     </columns>
                                 </TableView>
                             </children>

@@ -35,6 +35,7 @@ public class Controller {
   @FXML private ListView<Product> produceList;
 
   ObservableList<Product> productLine;
+  ProductionRecord produce;
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
@@ -82,9 +83,10 @@ public class Controller {
     int tempCount = Integer.parseInt(comboBox.getValue());
     if (tempCount != 0) {
       int itemCount = tempCount;
-      for (int i = (tempCount-1); i >= 0; i--) {
-        ProductionRecord produce =
-            new ProductionRecord(produceList.getSelectionModel().getSelectedItem(), (itemCount - i));
+      for (int i = (tempCount - 1); i >= 0; i--) {
+        produce =
+            new ProductionRecord(
+                produceList.getSelectionModel().getSelectedItem(), (itemCount - i));
         productionLogTA.appendText(produce.toString());
       }
     }

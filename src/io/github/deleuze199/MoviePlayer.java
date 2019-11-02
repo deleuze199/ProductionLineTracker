@@ -51,10 +51,11 @@ public class MoviePlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * This method returns the specs of the product.
+   * This method returns the specs of the products screen and monitor.
    *
    * @return String of base classes toString method, screen, and monitor
    */
+  @Override
   public String toString() {
     return super.toString() + "\nScreen: " + screen.toString() + "\nMonitor Type: " + monitorType;
   }

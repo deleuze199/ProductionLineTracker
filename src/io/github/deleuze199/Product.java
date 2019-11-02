@@ -34,6 +34,7 @@ public abstract class Product implements Item {
   public void setId(int id) {
     this.id = id;
   }
+
   /**
    * This is a getter for the int id.
    *
@@ -58,8 +59,7 @@ public abstract class Product implements Item {
    * @return type of product as a String
    */
   public String getType() {
-    String typeS = type.code.toString();
-    return typeS;
+    return type.code;
   }
 
   /**

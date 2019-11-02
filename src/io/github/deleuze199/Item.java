@@ -22,7 +22,7 @@ public interface Item {
   void setName(String name);
 
   /**
-   * This is a hetter for the product name.
+   * This is a setter for the product name.
    *
    * @return name of the product
    */

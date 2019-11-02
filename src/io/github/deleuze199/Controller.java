@@ -1,17 +1,12 @@
 package io.github.deleuze199;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -24,11 +19,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class Controller {
   @FXML private ComboBox<String> comboBox;
   @FXML private ChoiceBox<ItemType> choiceBox;
-  @FXML private TextField productName_tf;
-  @FXML private TextField manufacturer_tf;
+  @FXML private TextField productNameTF;
+  @FXML private TextField manufacturerTF;
   @FXML private TextArea productionLogTA;
-  @FXML private TableView<Product> propductTable;
-  @FXML private TableColumn<?, ?> IdCol;
+  @FXML private TableView<Product> productTable;
+  @FXML private TableColumn<?, ?> idCol;
   @FXML private TableColumn<?, ?> nameCol;
   @FXML private TableColumn<?, ?> manufacturerCol;
   @FXML private TableColumn<?, ?> typeCol;
@@ -58,18 +53,18 @@ public class Controller {
       // SQL String to add a product to the database
       final String insertProductLine =
           "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
-      PreparedStatement preparedstmt = conn.prepareStatement(insertProductLine);
-      preparedstmt.setString(1, choiceBox.getValue().code());
-      preparedstmt.setString(2, manufacturer_tf.getText());
-      preparedstmt.setString(3, productName_tf.getText());
+      PreparedStatement preparedStmt = conn.prepareStatement(insertProductLine);
+      preparedStmt.setString(1, choiceBox.getValue().code());
+      preparedStmt.setString(2, manufacturerTF.getText());
+      preparedStmt.setString(3, productNameTF.getText());
       // Execute SQL string
-      preparedstmt.execute();
+      preparedStmt.execute();
       // add product to productLine ArrayList
       Widget productWidget =
-          new Widget(productName_tf.getText(), manufacturer_tf.getText(), choiceBox.getValue());
+          new Widget(productNameTF.getText(), manufacturerTF.getText(), choiceBox.getValue());
       productLine.add(productWidget);
       conn.close();
-      preparedstmt.close();
+      preparedStmt.close();
     } catch (ClassNotFoundException | SQLException e) {
       e.printStackTrace();
     }
@@ -80,10 +75,9 @@ public class Controller {
    * method for now just prints to the console "Produce Button".
    */
   public void produceBtnHandler() {
-    int tempCount = Integer.parseInt(comboBox.getValue());
-    if (tempCount != 0) {
-      int itemCount = tempCount;
-      for (int i = (tempCount - 1); i >= 0; i--) {
+    int itemCount = Integer.parseInt(comboBox.getValue());
+    if (itemCount != 0) {
+      for (int i = (itemCount - 1); i >= 0; i--) {
         produce =
             new ProductionRecord(
                 produceList.getSelectionModel().getSelectedItem(), (itemCount - i));
@@ -99,11 +93,11 @@ public class Controller {
   public void initialize() {
     // make ObservableList display productLine Array in TableView
     productLine = FXCollections.observableArrayList();
-    IdCol.setCellValueFactory(new PropertyValueFactory("id"));
+    idCol.setCellValueFactory(new PropertyValueFactory("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory("name"));
     manufacturerCol.setCellValueFactory(new PropertyValueFactory("manufacturer"));
     typeCol.setCellValueFactory(new PropertyValueFactory("type"));
-    propductTable.setItems(productLine);
+    productTable.setItems(productLine);
     produceList.setItems(productLine);
     // populate ItemType enum types in the ChoiceBox
     for (ItemType cb : ItemType.values()) {

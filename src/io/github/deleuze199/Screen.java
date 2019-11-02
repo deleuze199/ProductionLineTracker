@@ -8,21 +8,21 @@ package io.github.deleuze199;
  */
 public class Screen implements ScreenSpec {
   String resolution;
-  int refreshrate;
-  int responsetime;
+  int refreshRate;
+  int responseTime;
 
   /**
    * This is the constructor of the screen class it sets the resolution, refresh rate, and response
    * time.
    *
    * @param resolution is the product's screen resolution
-   * @param refreshrate is the product's screen refresh rate
-   * @param responsetime is the product's screen response time
+   * @param refreshRate is the product's screen refresh rate
+   * @param responseTime is the product's screen response time
    */
-  public Screen(String resolution, int refreshrate, int responsetime) {
+  public Screen(String resolution, int refreshRate, int responseTime) {
     this.resolution = resolution;
-    this.refreshrate = refreshrate;
-    this.responsetime = responsetime;
+    this.refreshRate = refreshRate;
+    this.responseTime = responseTime;
   }
 
   /**
@@ -34,6 +34,7 @@ public class Screen implements ScreenSpec {
   public String getResolution() {
     return resolution;
   }
+
   /**
    * This is the getter for the screen refresh rate.
    *
@@ -41,8 +42,9 @@ public class Screen implements ScreenSpec {
    */
   @Override
   public int getRefreshRate() {
-    return refreshrate;
+    return refreshRate;
   }
+
   /**
    * This is the getter for the screen response time.
    *
@@ -50,20 +52,21 @@ public class Screen implements ScreenSpec {
    */
   @Override
   public int getResponseTime() {
-    return responsetime;
+    return responseTime;
   }
 
   /**
-   * This method returns the screen specs of the product.
+   * This returns the resolution and refresh rate of the screens product.
    *
    * @return String of the screen's resolution, refresh rate, and response time
    */
+  @Override
   public String toString() {
     return "Resolution: "
         + resolution
         + "\nRefresh Rate: "
-        + refreshrate
-        + "\nResponse time: "
-        + responsetime;
+        + refreshRate
+        + "\nResponse Time: "
+        + responseTime;
   }
 }

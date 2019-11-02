@@ -2,6 +2,7 @@ package io.github.deleuze199;
 
 /** The ScreenSpec interface has the methods to get the products screen specs. */
 public interface ScreenSpec {
+
   /**
    * This is a getter for the screen resolution.
    *

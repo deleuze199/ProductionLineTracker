@@ -34,7 +34,7 @@ public class Controller {
 
   /**
    * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
-   * method adds the product to the database.
+   * method adds the product to the database, TableView, and ListView.
    */
   public void productLineButtonHandler() {
     // Database driver and location
@@ -72,7 +72,7 @@ public class Controller {
 
   /**
    * produceBtnHandler method is a handler for when the "Record Production" button is clicked. This
-   * method for now just prints to the console "Produce Button".
+   * method creates objects of the ProductionRecord class.
    */
   public void produceBtnHandler() {
     int itemCount = Integer.parseInt(comboBox.getValue());
@@ -87,8 +87,8 @@ public class Controller {
   }
 
   /**
-   * The initialize method populates numbers 1-10 in the ComboBox and populates the ItemType enum
-   * class into ChoiceBox.
+   * The initialize method populates numbers 1-10 in the ComboBox, populates the ItemType enum class
+   * into ChoiceBox, populates the TableView and ListView.
    */
   public void initialize() {
     // make ObservableList display productLine Array in TableView

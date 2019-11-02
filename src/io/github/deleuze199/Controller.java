@@ -79,8 +79,15 @@ public class Controller {
    * method for now just prints to the console "Produce Button".
    */
   public void produceBtnHandler() {
-    //    ProductionRecord Produce = new
-    // ProductionRecord(produceList.getSelectionModel().getSelectedItem(),)
+    int tempCount = Integer.parseInt(comboBox.getValue());
+    if (tempCount != 0) {
+      int itemCount = tempCount;
+      for (int i = (tempCount-1); i >= 0; i--) {
+        ProductionRecord produce =
+            new ProductionRecord(produceList.getSelectionModel().getSelectedItem(), (itemCount - i));
+        productionLogTA.appendText(produce.toString());
+      }
+    }
   }
 
   /**

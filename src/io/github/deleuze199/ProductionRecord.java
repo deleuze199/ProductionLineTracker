@@ -39,7 +39,8 @@ public class ProductionRecord {
   }
 
   ProductionRecord(Product pr, int count) {
-    String serialNum = pr.getManufacturer().substring(0, 3) + pr.getType();
+    String serialNum =
+        pr.getManufacturer().substring(0, 3) + pr.getType() + String.format("%05d", count);
     setSerialNum(serialNum);
     dateProduced = new Date();
     // still need to make auto-incrementing number
@@ -59,7 +60,8 @@ public class ProductionRecord {
         + " Serial Num: "
         + serialNumber
         + " Date: "
-        + dateProduced;
+        + dateProduced
+        + "\n";
   }
 
   /**

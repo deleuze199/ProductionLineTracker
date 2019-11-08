@@ -7,26 +7,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-<<<<<<< .merge_file_IKt4c8
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar:///Applications/h2/bin/h2-1.4.199.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://C:/H2/bin/h2-1.4.199.jar!/" />
-=======
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
           <root url="jar://$MODULE_DIR$/res/h2-1.4.199.jar!/" />
->>>>>>> .merge_file_wbKLsq
         </CLASSES>
         <JAVADOC />
         <SOURCES />

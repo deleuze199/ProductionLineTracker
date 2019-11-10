@@ -1,6 +1,6 @@
 package io.github.deleuze199;
 
-import java.util.Date;
+import java.sql.Date;
 
 /** ProductRecord class is made to print the product information to the Production Log tab. */
 public class ProductionRecord {
@@ -8,7 +8,7 @@ public class ProductionRecord {
   int productionNumber;
   int productID;
   String serialNumber;
-  Date dateProduced;
+  java.sql.Date dateProduced;
 
   /**
    * Constructor for the ProductionRecord and sets the fields of the class.
@@ -19,7 +19,7 @@ public class ProductionRecord {
     this.productID = productID;
     productionNumber = 0;
     serialNumber = "0";
-    dateProduced = new Date();
+    dateProduced = new java.sql.Date(System.currentTimeMillis());
   }
 
   /**
@@ -27,7 +27,7 @@ public class ProductionRecord {
    *
    * @param productID correspond to the productID from the Product table
    */
-  ProductionRecord(int productionNumber, int productID, String serialNumber, Date dateProduced) {
+  ProductionRecord(int productionNumber, int productID, String serialNumber, java.sql.Date dateProduced) {
     this.productionNumber = productionNumber;
     this.productID = productID;
     this.serialNumber = serialNumber;
@@ -45,7 +45,9 @@ public class ProductionRecord {
     String serialNum =
         pr.getManufacturer().substring(0, 3) + pr.getType() + String.format("%05d", itemCount);
     setSerialNum(serialNum);
-    dateProduced = new Date();
+    dateProduced = new java.sql.Date(System.currentTimeMillis());
+    setProdDate(dateProduced);
+    setProductID(pr.getId());
   }
 
   /**
@@ -98,8 +100,8 @@ public class ProductionRecord {
    *
    * @return productID
    */
-  public int getProductID() {
-    return productID;
+  public String getProductID() {
+    return String.valueOf(productID);
   }
 
   /**
@@ -134,7 +136,7 @@ public class ProductionRecord {
    *
    * @return dateProduced
    */
-  public Date getProdDate() {
+  public java.sql.Date getProdDate() {
     return dateProduced;
   }
 }

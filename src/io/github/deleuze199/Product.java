@@ -20,6 +20,21 @@ public abstract class Product implements Item {
    * @param manufacturer is the manufacturer of the product
    * @param type is the type of the product
    */
+  Product(int id, String name, String manufacturer, ItemType type) {
+    this.id = id;
+    this.name = name;
+    this.manufacturer = manufacturer;
+    this.type = type;
+  }
+
+  /**
+   * This is a constructor for the Product class that sets the name of the product, manufacturer of
+   * the product, and the type of the product.
+   *
+   * @param name is the name of the product
+   * @param manufacturer is the manufacturer of the product
+   * @param type is the type of the product
+   */
   Product(String name, String manufacturer, ItemType type) {
     this.name = name;
     this.manufacturer = manufacturer;
@@ -104,7 +119,7 @@ public abstract class Product implements Item {
    * @return string of the product information
    */
   public String toString() {
-    return "Name: " + name + "\nManufacturer: " + manufacturer + "\nType: " + type;
+    return "Name: " + name + " Manufacturer: " + manufacturer + " Type: " + type ;
   }
 }
 
@@ -118,6 +133,10 @@ class Widget extends Product {
    * @param manufacturer is the manufacturer of the product
    * @param type is the type of the product
    */
+  Widget(int id, String name, String manufacturer, ItemType type) {
+    super(id, name, manufacturer, type);
+  }
+
   Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);
   }

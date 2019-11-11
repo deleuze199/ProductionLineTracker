@@ -2,7 +2,6 @@ package io.github.deleuze199;
 
 import java.sql.*;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -26,7 +25,7 @@ public class Controller {
   @FXML private TableColumn<?, ?> nameCol;
   @FXML private TableColumn<?, ?> manufacturerCol;
   @FXML private TableColumn<?, ?> typeCol;
-  @FXML private ListView<Product> produceList;
+  @FXML private ListView<Product> produceListLV;
 
   // Database driver and location
   final String Jdbc_Driver = "org.h2.Driver";
@@ -37,10 +36,11 @@ public class Controller {
   Connection conn;
   ResultSet rs;
   ObservableList<Product> productLine;
+  ArrayList<ProductionRecord> prArrayList = new ArrayList<>();
 
   /**
-   * productLineButtonHandler method is a handler for when the "Add Product" button is click. This
-   * method adds the product to the database, TableView, and ListView.
+   * The productLineButtonHandler method is a handler for when the "Add Product" button is click.
+   * This method inserts added product into database and calls loadProductList.
    */
   public void productLineButtonHandler() {
     try {
@@ -57,13 +57,7 @@ public class Controller {
       preparedStmt.setString(3, productNameTF.getText());
       // Execute SQL string
       preparedStmt.execute();
-
       loadProductList();
-
-      // add product to productLine ObservableList
-//      Widget productWidget =
-//          new Widget(productNameTF.getText(), manufacturerTF.getText(), choiceBox.getValue());
-//      productLine.add(productWidget);
       conn.close();
       preparedStmt.close();
     } catch (ClassNotFoundException | SQLException e) {
@@ -72,11 +66,14 @@ public class Controller {
   }
 
   /**
-   * produceBtnHandler method is a handler for when the "Record Production" button is clicked. This
-   * method creates objects of the ProductionRecord class.
+   * The produceBtnHandler method is a handler for when the "Record Production" button is clicked.
+   * This method gets the selected product from the Product Line ListView, gets the quantity from
+   * the comboBox, creates an ArrayList of ProductionRecord objects named productionRun, sends the
+   * productionRun to an addToProductionDB method, calls loadProductionLog, and calls
+   * showProduction.
    */
-  public void produceBtnHandler() {
-    Product product = produceList.getSelectionModel().getSelectedItem();
+  public void recordProductionBtnHandler() {
+    Product product = produceListLV.getSelectionModel().getSelectedItem();
     int itemCount = Integer.parseInt(comboBox.getValue());
     ArrayList<ProductionRecord> productionRun = new ArrayList<>();
     if (itemCount != 0) {
@@ -90,8 +87,11 @@ public class Controller {
     }
   }
 
+  /**
+   * The setupProductLineTable method associates the columns of the TableView with the fields of the
+   * ObservableList.
+   */
   public void setupProductLineTable() {
-    // make ObservableList display productLine Array in TableView
     productLine = FXCollections.observableArrayList();
     idCol.setCellValueFactory(new PropertyValueFactory("id"));
     nameCol.setCellValueFactory(new PropertyValueFactory("name"));
@@ -100,6 +100,10 @@ public class Controller {
     productTable.setItems(productLine);
   }
 
+  /**
+   * The loadProductList method creates Product objects from the Product database table and add them
+   * to the productLine ObservableList.
+   */
   public void loadProductList() {
     try {
       // Register JDBC driver
@@ -140,6 +144,11 @@ public class Controller {
     }
   }
 
+  /**
+   * The loadProductionLog method ceates ProductionRecord objects from the records in the
+   * ProductionRecord database table, populates the productionLog ArrayList, and calls
+   * showProduction
+   */
   public void loadProductionLog() {
     try {
       // Register JDBC driver
@@ -155,8 +164,10 @@ public class Controller {
         int productId = rs.getInt("PRODUCT_ID");
         String productSerialNum = rs.getString("SERIAL_NUM");
         Date productDate = rs.getDate("DATE_PRODUCED");
-        ProductionRecord pr = new ProductionRecord(productNum, productId, productSerialNum, productDate);
-        //productionLogTA.setText(pr.toString());
+        ProductionRecord pr =
+            new ProductionRecord(productNum, productId, productSerialNum, productDate);
+        prArrayList.add(pr);
+        // productionLogTA.setText(pr.toString());
         showProduction();
       }
     } catch (ClassNotFoundException | SQLException e) {
@@ -164,6 +175,13 @@ public class Controller {
     }
   }
 
+  /**
+   * The addToProductionDB method loops through the productionRun, inserting productionRecord object
+   * information into the ProductionRecord database table.
+   *
+   * @param productionRun is an ArrayList of ProductionRecord objects to be inserted into the
+   *     database
+   */
   public void addToProductionDB(ArrayList<ProductionRecord> productionRun) {
     try {
       // Register JDBC driver
@@ -171,9 +189,9 @@ public class Controller {
       // Create a connection to database
       conn = DriverManager.getConnection(db_Url, user, pass);
       for (int i = 0; i < productionRun.size(); i++) {
-        System.out.println(productionRun.get(i).toString());
         // SQL String to add a product to the database
-        String sql = "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED) VALUES ( ?,?,?)";
+        String sql =
+            "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED) VALUES ( ?,?,?)";
         PreparedStatement preparedStmt = conn.prepareStatement(sql);
         preparedStmt.setString(1, productionRun.get(i).getProductID());
         preparedStmt.setString(2, productionRun.get(i).getSerialNum());
@@ -186,17 +204,25 @@ public class Controller {
     }
   }
 
-    public void showProduction() {
-      //productionLogTA.appendText(produce.toString());
+  /**
+   * The showProduction method populates the TextArea on the Production Log tab with the information
+   * from the productionLog.
+   */
+  public void showProduction() {
+    for (int i = 0; i < prArrayList.size(); i++) {
+      productionLogTA.appendText(prArrayList.get(i).toString());
     }
+  }
 
   /**
-   * The initialize method populates numbers 1-10 in the ComboBox, populates the ItemType enum class
-   * into ChoiceBox, populates the TableView and ListView.
+   * The initialize method calls setupProductLineTable, associates the ObservableList with the
+   * Product Line ListView, calls loadProductList, calls loadProductionLog, populates numbers 1-10
+   * in the ComboBox, populates the ItemType enum class into ChoiceBox, populates the TableView and
+   * ListView.
    */
   public void initialize() {
     setupProductLineTable();
-    produceList.setItems(productLine);
+    produceListLV.setItems(productLine);
     loadProductList();
     loadProductionLog();
 
@@ -209,8 +235,5 @@ public class Controller {
     comboBox.getSelectionModel().selectFirst();
     // makes ComboBox editable
     comboBox.setEditable(true);
-
-    // ProductionRecord pr = new ProductionRecord(38);
-    // productionLogTA.setText(pr.toString());
   }
 }

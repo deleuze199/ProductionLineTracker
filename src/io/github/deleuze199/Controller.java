@@ -1,7 +1,13 @@
 package io.github.deleuze199;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Properties;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,12 +33,11 @@ public class Controller {
   @FXML private TableColumn<?, ?> typeCol;
   @FXML private ListView<Product> produceListLV;
 
-  // Database driver and location
-  final String Jdbc_Driver = "org.h2.Driver";
-  final String db_Url = "jdbc:h2:./res/h2";
-  // Database credentials
-  final String user = "";
-  final String pass = "";
+  String Jdbc_Driver;
+  String db_Url;
+  String user;
+  String pass;
+
   Connection conn;
   ResultSet rs;
   ObservableList<Product> productLine;
@@ -44,6 +49,8 @@ public class Controller {
    */
   public void productLineButtonHandler() {
     try {
+      setupDB();
+      System.out.println(Jdbc_Driver+"\n"+db_Url+"\n"+user+"\n"+pass);
       // Register JDBC driver
       Class.forName(Jdbc_Driver);
       // Create a connection to database
@@ -221,6 +228,7 @@ public class Controller {
    * ListView.
    */
   public void initialize() {
+    setupDB();
     setupProductLineTable();
     produceListLV.setItems(productLine);
     loadProductList();
@@ -235,5 +243,22 @@ public class Controller {
     comboBox.getSelectionModel().selectFirst();
     // makes ComboBox editable
     comboBox.setEditable(true);
+  }
+
+  public void setupDB() {
+    Properties prop = new Properties();
+    try (InputStream input = new FileInputStream("./res/properties")) {
+      prop.load(input);
+    } catch (FileNotFoundException e) {
+      System.out.println("NO GO");
+    } catch (IOException ex) {
+      System.out.println("DEF NO GO");
+    }
+    // Database driver and location
+    Jdbc_Driver = "org.h2.Driver";
+    db_Url = "jdbc:h2:./res/h2";
+    // Database credentials
+    user = "";
+    pass = prop.getProperty("password");
   }
 }

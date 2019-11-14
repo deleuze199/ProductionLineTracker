@@ -7,9 +7,9 @@ package io.github.deleuze199;
  * @version a.1.0 10/8/2019
  */
 public class Screen implements ScreenSpec {
-  String resolution;
-  int refreshRate;
-  int responseTime;
+  private final String resolution;
+  private final int refreshRate;
+  private final int responseTime;
 
   /**
    * This is the constructor of the screen class it sets the resolution, refresh rate, and response

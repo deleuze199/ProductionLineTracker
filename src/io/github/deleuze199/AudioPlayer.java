@@ -8,8 +8,8 @@ package io.github.deleuze199;
  * @version a.1.0 10/3/2019
  */
 public class AudioPlayer extends Product implements MultimediaControl {
-  private String audioSpecification;
-  private String mediaType;
+  private final String audioSpecification;
+  private final String mediaType;
 
   /**
    * This is the constructor for the AudioPlayer class. It calls its base class constructor, sets

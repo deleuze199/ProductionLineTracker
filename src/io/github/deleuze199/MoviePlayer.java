@@ -9,8 +9,8 @@ import javafx.stage.Screen;
  * @version a.1.0 10/8/2019
  */
 public class MoviePlayer extends Product implements MultimediaControl {
-  private Screen screen;
-  private MonitorType monitorType;
+  private final Screen screen;
+  private final MonitorType monitorType;
 
   /**
    * This is the constructor for the MoviePlayer class.

@@ -11,7 +11,7 @@ public enum ItemType {
   VISUAL("VI"),
   AUDIO_MOBILE("AM"),
   VISUAL_MOBILE("VM");
-  public String code;
+  public final String code;
 
   /** This is the constructor of the ItemType enum and is used to set the String code. */
   ItemType(String code) {

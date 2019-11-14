@@ -20,18 +20,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
  * @author Benjamin Deleuze
  * @version a.1.0 9/21/2019
  */
+@SuppressWarnings("WeakerAccess")
 public class Controller {
+  //<editor-fold desc="FXML Fields">
   @FXML private ComboBox<String> comboBox;
   @FXML private ChoiceBox<ItemType> choiceBox;
   @FXML private TextField productNameTF;
   @FXML private TextField manufacturerTF;
   @FXML private TextArea productionLogTA;
   @FXML private TableView<Product> productTable;
-  @FXML private TableColumn<?, ?> idCol;
-  @FXML private TableColumn<?, ?> nameCol;
-  @FXML private TableColumn<?, ?> manufacturerCol;
-  @FXML private TableColumn<?, ?> typeCol;
+  @FXML private TableColumn<Product, Integer> idCol;
+  @FXML private TableColumn<Product, String> nameCol;
+  @FXML private TableColumn<Product, String> manufacturerCol;
+  @FXML private TableColumn<Product, ItemType> typeCol;
   @FXML private ListView<Product> produceListLV;
+  //</editor-fold>
 
   String Jdbc_Driver;
   String db_Url;
@@ -41,7 +44,7 @@ public class Controller {
   Connection conn;
   ResultSet rs;
   ObservableList<Product> productLine;
-  ArrayList<ProductionRecord> prArrayList = new ArrayList<>();
+  final ArrayList<ProductionRecord> prArrayList = new ArrayList<>();
 
   /**
    * The productLineButtonHandler method is a handler for when the "Add Product" button is click.
@@ -50,7 +53,6 @@ public class Controller {
   public void productLineButtonHandler() {
     try {
       setupDB();
-      System.out.println(Jdbc_Driver+"\n"+db_Url+"\n"+user+"\n"+pass);
       // Register JDBC driver
       Class.forName(Jdbc_Driver);
       // Create a connection to database
@@ -100,10 +102,10 @@ public class Controller {
    */
   public void setupProductLineTable() {
     productLine = FXCollections.observableArrayList();
-    idCol.setCellValueFactory(new PropertyValueFactory("id"));
-    nameCol.setCellValueFactory(new PropertyValueFactory("name"));
-    manufacturerCol.setCellValueFactory(new PropertyValueFactory("manufacturer"));
-    typeCol.setCellValueFactory(new PropertyValueFactory("type"));
+    idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+    nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+    manufacturerCol.setCellValueFactory(new PropertyValueFactory<>("manufacturer"));
+    typeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
     productTable.setItems(productLine);
   }
 
@@ -152,7 +154,7 @@ public class Controller {
   }
 
   /**
-   * The loadProductionLog method ceates ProductionRecord objects from the records in the
+   * The loadProductionLog method creates ProductionRecord objects from the records in the
    * ProductionRecord database table, populates the productionLog ArrayList, and calls
    * showProduction
    */
@@ -195,14 +197,14 @@ public class Controller {
       Class.forName(Jdbc_Driver);
       // Create a connection to database
       conn = DriverManager.getConnection(db_Url, user, pass);
-      for (int i = 0; i < productionRun.size(); i++) {
+      for (ProductionRecord productionRecord : productionRun) {
         // SQL String to add a product to the database
         String sql =
-            "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED) VALUES ( ?,?,?)";
+                "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED) VALUES ( ?,?,?)";
         PreparedStatement preparedStmt = conn.prepareStatement(sql);
-        preparedStmt.setString(1, productionRun.get(i).getProductID());
-        preparedStmt.setString(2, productionRun.get(i).getSerialNum());
-        preparedStmt.setDate(3, productionRun.get(i).getProdDate());
+        preparedStmt.setString(1, productionRecord.getProductID());
+        preparedStmt.setString(2, productionRecord.getSerialNum());
+        preparedStmt.setDate(3, productionRecord.getProdDate());
         // Execute SQL string
         preparedStmt.execute();
       }
@@ -216,8 +218,8 @@ public class Controller {
    * from the productionLog.
    */
   public void showProduction() {
-    for (int i = 0; i < prArrayList.size(); i++) {
-      productionLogTA.appendText(prArrayList.get(i).toString());
+    for (ProductionRecord productionRecord : prArrayList) {
+      productionLogTA.appendText(productionRecord.toString());
     }
   }
 

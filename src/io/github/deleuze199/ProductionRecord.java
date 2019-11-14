@@ -3,12 +3,12 @@ package io.github.deleuze199;
 import java.sql.Date;
 
 /** ProductRecord class is made to print the product information to the Production Log tab. */
-public class ProductionRecord {
+class ProductionRecord {
 
-  int productionNumber;
-  int productID;
-  String serialNumber;
-  java.sql.Date dateProduced;
+  private int productionNumber;
+  private int productID;
+  private String serialNumber;
+  private java.sql.Date dateProduced;
 
   /**
    * Constructor for the ProductionRecord and sets the fields of the class.
@@ -91,6 +91,7 @@ public class ProductionRecord {
    *
    * @param productID is the product ID
    */
+  @SuppressWarnings("WeakerAccess")
   public void setProductID(int productID) {
     this.productID = productID;
   }
@@ -109,7 +110,7 @@ public class ProductionRecord {
    *
    * @param serialNumber is the product serial number
    */
-  public void setSerialNum(String serialNumber) {
+  private void setSerialNum(String serialNumber) {
     this.serialNumber = serialNumber;
   }
 
@@ -127,6 +128,7 @@ public class ProductionRecord {
    *
    * @param dateProduced is the products date produced
    */
+  @SuppressWarnings("WeakerAccess")
   public void setProdDate(Date dateProduced) {
     this.dateProduced = dateProduced;
   }

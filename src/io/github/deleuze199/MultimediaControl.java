@@ -7,7 +7,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 10/3/2019
  */
-public interface MultimediaControl {
+interface MultimediaControl {
   /** This is to play the item on the product line. */
   void play();
 

@@ -6,7 +6,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 9/28/2019
  */
-public interface Item {
+interface Item {
   /**
    * This is a getter for the product id.
    *

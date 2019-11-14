@@ -6,7 +6,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 10/3/2019
  */
-public class AudioPlayerDriver {
+class AudioPlayerDriver {
 
   /**
    * main is where the driver class starts. It creates a object of the AudioPlayer class and use the

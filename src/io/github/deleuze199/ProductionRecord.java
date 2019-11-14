@@ -101,7 +101,7 @@ class ProductionRecord {
    *
    * @return productID
    */
-  public String getProductID() {
+  String getProductID() {
     return String.valueOf(productID);
   }
 
@@ -119,7 +119,7 @@ class ProductionRecord {
    *
    * @return serialNumber
    */
-  public String getSerialNum() {
+  String getSerialNum() {
     return serialNumber;
   }
 
@@ -138,7 +138,7 @@ class ProductionRecord {
    *
    * @return dateProduced
    */
-  public java.sql.Date getProdDate() {
+  java.sql.Date getProdDate() {
     return dateProduced;
   }
 }

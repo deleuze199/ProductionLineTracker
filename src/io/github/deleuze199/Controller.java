@@ -22,7 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 @SuppressWarnings("WeakerAccess")
 public class Controller {
-  //<editor-fold desc="FXML Fields">
+  // <editor-fold desc="FXML Fields">
   @FXML private ComboBox<String> comboBox;
   @FXML private ChoiceBox<ItemType> choiceBox;
   @FXML private TextField productNameTF;
@@ -34,7 +34,10 @@ public class Controller {
   @FXML private TableColumn<Product, String> manufacturerCol;
   @FXML private TableColumn<Product, ItemType> typeCol;
   @FXML private ListView<Product> produceListLV;
-  //</editor-fold>
+  @FXML private TextField emplyeeNameTF;
+  @FXML private TextField emplyeePasswordTF;
+  @FXML private Label emplyeeOutputLabel;
+  // </editor-fold>
 
   String Jdbc_Driver;
   String db_Url;
@@ -200,7 +203,7 @@ public class Controller {
       for (ProductionRecord productionRecord : productionRun) {
         // SQL String to add a product to the database
         String sql =
-                "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED) VALUES ( ?,?,?)";
+            "INSERT INTO PRODUCTIONRECORD(PRODUCT_ID, SERIAL_NUM, DATE_PRODUCED) VALUES ( ?,?,?)";
         PreparedStatement preparedStmt = conn.prepareStatement(sql);
         preparedStmt.setString(1, productionRecord.getProductID());
         preparedStmt.setString(2, productionRecord.getSerialNum());
@@ -221,6 +224,11 @@ public class Controller {
     for (ProductionRecord productionRecord : prArrayList) {
       productionLogTA.appendText(productionRecord.toString());
     }
+  }
+
+  public void employeeCreateBtHandler() {
+    Employee employee = new Employee(emplyeeNameTF.getText(),emplyeePasswordTF.getText());
+    emplyeeOutputLabel.setText(employee.toString());
   }
 
   /**

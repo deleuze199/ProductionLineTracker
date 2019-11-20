@@ -227,7 +227,7 @@ public class Controller {
   }
 
   public void employeeCreateBtHandler() {
-    Employee employee = new Employee(emplyeeNameTF.getText(),emplyeePasswordTF.getText());
+    Employee employee = new Employee(emplyeeNameTF.getText(), emplyeePasswordTF.getText());
     emplyeeOutputLabel.setText(employee.toString());
   }
 

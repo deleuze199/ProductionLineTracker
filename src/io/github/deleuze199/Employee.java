@@ -45,16 +45,13 @@ public class Employee {
   }
 
   private boolean isValidPassword(String password) {
-    Pattern[] inputRegexes = new Pattern[3];
-    inputRegexes[0] = Pattern.compile(".*[A-Z].*");
-    inputRegexes[1] = Pattern.compile(".*[a-z].*");
-    inputRegexes[2] = Pattern.compile(".*[`~!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?].*");
-    for (Pattern inputRegex : inputRegexes) {
-      if (!inputRegex.matcher(password).matches()) {
-        return false;
-      }
+    if(password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).+$")) {
+      this.password = password;
+      return true;
+    } else {
+      this.password = "pw";
+      return false;
     }
-    return true;
   }
 
   @Override

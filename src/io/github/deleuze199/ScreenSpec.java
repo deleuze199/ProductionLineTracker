@@ -8,6 +8,7 @@ interface ScreenSpec {
    *
    * @return String of the screen resolution
    */
+  @SuppressWarnings("unused")
   String getResolution();
 
   /**
@@ -15,6 +16,7 @@ interface ScreenSpec {
    *
    * @return String of the screen refresh rate
    */
+  @SuppressWarnings("unused")
   int getRefreshRate();
 
   /**
@@ -22,5 +24,6 @@ interface ScreenSpec {
    *
    * @return String o the screen response time
    */
+  @SuppressWarnings("unused")
   int getResponseTime();
 }

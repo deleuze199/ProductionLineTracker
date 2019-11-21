@@ -6,6 +6,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 9/28/2019
  */
+@SuppressWarnings("unused")
 public abstract class Product implements Item {
   private int id;
   private ItemType type;
@@ -137,6 +138,7 @@ class Widget extends Product {
     super(id, name, manufacturer, type);
   }
 
+  @SuppressWarnings("unused")
   Widget(String name, String manufacturer, ItemType type) {
     super(name, manufacturer, type);
   }

@@ -6,6 +6,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 10/8/2019
  */
+@SuppressWarnings("unused")
 public class Screen implements ScreenSpec {
   private final String resolution;
   private final int refreshRate;

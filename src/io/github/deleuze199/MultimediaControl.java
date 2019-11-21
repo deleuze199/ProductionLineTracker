@@ -9,14 +9,18 @@ package io.github.deleuze199;
  */
 interface MultimediaControl {
   /** This is to play the item on the product line. */
+  @SuppressWarnings("unused")
   void play();
 
   /** This is to stop the item on the product line. */
+  @SuppressWarnings("unused")
   void stop();
 
   /** This is to get the previous item on the product line. */
+  @SuppressWarnings("unused")
   void previous();
 
   /** This is to get the next item on the product line. */
+  @SuppressWarnings("unused")
   void next();
 }

@@ -1,13 +1,11 @@
 package io.github.deleuze199;
 
-import java.util.regex.Pattern;
+class Employee {
 
-public class Employee {
-
-  StringBuilder name;
-  String username;
-  String password;
-  String email;
+  private StringBuilder name;
+  private String username;
+  private String password;
+  private String email;
 
   Employee(String name, String password) {
     if (checkName(name)) {
@@ -25,13 +23,8 @@ public class Employee {
   }
 
   private boolean checkName(String name) {
-    StringBuilder nameSB = new StringBuilder(name);
-    this.name = nameSB;
-    if (name.contains(" ")) {
-      return true;
-    } else {
-      return false;
-    }
+    this.name = new StringBuilder(name);
+    return name.contains(" ");
   }
 
   private void setUsername(String name) {

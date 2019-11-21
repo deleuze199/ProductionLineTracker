@@ -1,3 +1,9 @@
-GridPane {
-    -fx-background-color: #000000;
+.root{
+    -fx-base:darkslategray;
+}
+.label {
+    -fx-text-fill: #00ff00;
+}
+.table-cell, .list-cell, .text-area{
+    -fx-text-fill: #BDFFBD;
 }

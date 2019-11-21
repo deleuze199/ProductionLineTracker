@@ -3,6 +3,7 @@ package io.github.deleuze199;
 import java.sql.Date;
 
 /** ProductRecord class is made to print the product information to the Production Log tab. */
+@SuppressWarnings("ALL")
 class ProductionRecord {
 
   private int productionNumber;

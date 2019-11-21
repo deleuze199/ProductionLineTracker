@@ -7,6 +7,7 @@ package io.github.deleuze199;
  * @author Benjamin Deleuze
  * @version a.1.0 10/3/2019
  */
+@SuppressWarnings("SameParameterValue")
 public class AudioPlayer extends Product implements MultimediaControl {
   private final String audioSpecification;
   private final String mediaType;

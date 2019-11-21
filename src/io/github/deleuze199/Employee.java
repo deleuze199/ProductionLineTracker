@@ -38,7 +38,7 @@ class Employee {
   }
 
   private boolean isValidPassword(String password) {
-    if(password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).+$")) {
+    if (password.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).+$")) {
       this.password = password;
       return true;
     } else {

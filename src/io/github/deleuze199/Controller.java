@@ -1,7 +1,6 @@
 package io.github.deleuze199;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -56,10 +55,6 @@ public class Controller {
   public void productLineButtonHandler() {
     try {
       setupDB();
-      // Register JDBC driver
-      Class.forName(Jdbc_Driver);
-      // Create a connection to database
-      conn = DriverManager.getConnection(db_Url, user, pass);
       // SQL String to add a product to the database
       final String insertProductLine =
           "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
@@ -72,7 +67,7 @@ public class Controller {
       loadProductList();
       conn.close();
       preparedStmt.close();
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
       e.printStackTrace();
     }
   }
@@ -118,10 +113,6 @@ public class Controller {
    */
   public void loadProductList() {
     try {
-      // Register JDBC driver
-      Class.forName(Jdbc_Driver);
-      // Create a connection to database
-      conn = DriverManager.getConnection(db_Url, user, pass);
       // SQL String to add a product to the database
       String sql = "SELECT * FROM PRODUCT";
       PreparedStatement preparedStmt = conn.prepareStatement(sql);
@@ -151,7 +142,7 @@ public class Controller {
         Widget product = new Widget(productId, productName, productManufacturer, productType);
         productLine.add(product);
       }
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
       e.printStackTrace();
     }
   }
@@ -159,14 +150,10 @@ public class Controller {
   /**
    * The loadProductionLog method creates ProductionRecord objects from the records in the
    * ProductionRecord database table, populates the productionLog ArrayList, and calls
-   * showProduction
+   * showProduction.
    */
   public void loadProductionLog() {
     try {
-      // Register JDBC driver
-      Class.forName(Jdbc_Driver);
-      // Create a connection to database
-      conn = DriverManager.getConnection(db_Url, user, pass);
       // SQL String to add a product to the database
       String sql = "SELECT * FROM PRODUCTIONRECORD";
       PreparedStatement preparedStmt = conn.prepareStatement(sql);
@@ -182,7 +169,7 @@ public class Controller {
         // productionLogTA.setText(pr.toString());
         showProduction();
       }
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
       e.printStackTrace();
     }
   }
@@ -196,10 +183,7 @@ public class Controller {
    */
   public void addToProductionDB(ArrayList<ProductionRecord> productionRun) {
     try {
-      // Register JDBC driver
-      Class.forName(Jdbc_Driver);
-      // Create a connection to database
-      conn = DriverManager.getConnection(db_Url, user, pass);
+      setupDB();
       for (ProductionRecord productionRecord : productionRun) {
         // SQL String to add a product to the database
         String sql =
@@ -211,7 +195,7 @@ public class Controller {
         // Execute SQL string
         preparedStmt.execute();
       }
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
       e.printStackTrace();
     }
   }
@@ -264,16 +248,31 @@ public class Controller {
     Properties prop = new Properties();
     try (InputStream input = new FileInputStream("./res/properties")) {
       prop.load(input);
-    } catch (FileNotFoundException e) {
+      // Database driver and location
+      Jdbc_Driver = "org.h2.Driver";
+      db_Url = "jdbc:h2:./res/h2";
+      // Database credentials
+      user = "";
+      pass = prop.getProperty("password");
+      // Register JDBC driver
+      Class.forName(Jdbc_Driver);
+      // Create a connection to database
+      conn = DriverManager.getConnection(db_Url, user, reverseString(pass));
+    } catch (IOException | ClassNotFoundException | SQLException e) {
       System.out.println("NO GO");
-    } catch (IOException ex) {
-      System.out.println("DEF NO GO");
     }
-    // Database driver and location
-    Jdbc_Driver = "org.h2.Driver";
-    db_Url = "jdbc:h2:./res/h2";
-    // Database credentials
-    user = "";
-    pass = prop.getProperty("password");
+  }
+
+  /**
+   * This method reverses the order of the password to the database.
+   *
+   * @param pw backward password being passed in
+   * @return actual pw
+   */
+  public String reverseString(String pw) {
+    if (pw.isEmpty()) {
+      return pw;
+    }
+    return reverseString(pw.substring(1)) + pw.charAt(0);
   }
 }

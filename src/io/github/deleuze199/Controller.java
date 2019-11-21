@@ -34,9 +34,9 @@ public class Controller {
   @FXML private TableColumn<Product, String> manufacturerCol;
   @FXML private TableColumn<Product, ItemType> typeCol;
   @FXML private ListView<Product> produceListLV;
-  @FXML private TextField emplyeeNameTF;
-  @FXML private TextField emplyeePasswordTF;
-  @FXML private Label emplyeeOutputLabel;
+  @FXML private TextField employeeNameTF;
+  @FXML private TextField employeePasswordTF;
+  @FXML private Label employeeOutputLabel;
   // </editor-fold>
 
   String Jdbc_Driver;
@@ -226,9 +226,13 @@ public class Controller {
     }
   }
 
+  /**
+   * The employeeCreateBtHandler method is handler to create an object of type Employee. Then sets
+   * the employeeOutputLabel the the object.toString function.
+   */
   public void employeeCreateBtHandler() {
-    Employee employee = new Employee(emplyeeNameTF.getText(), emplyeePasswordTF.getText());
-    emplyeeOutputLabel.setText(employee.toString());
+    Employee employee = new Employee(employeeNameTF.getText(), employeePasswordTF.getText());
+    employeeOutputLabel.setText(employee.toString());
   }
 
   /**
@@ -255,6 +259,7 @@ public class Controller {
     comboBox.setEditable(true);
   }
 
+  /** The setupDB method sets all of the credentials needed to access the database. */
   public void setupDB() {
     Properties prop = new Properties();
     try (InputStream input = new FileInputStream("./res/properties")) {

@@ -163,12 +163,12 @@
                   <font>
                      <Font size="14.0" />
                   </font></Label>
-                  <TextField fx:id="emplyeeNameTF" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <TextField fx:id="employeeNameTF" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                       <GridPane.margin>
                       <Insets left="20.0" right="20.0" />
                       </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="emplyeePasswordTF" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <TextField fx:id="employeePasswordTF" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                       <GridPane.margin>
                       <Insets left="20.0" right="20.0" />
                       </GridPane.margin>
@@ -177,7 +177,7 @@
                   <font>
                      <Font size="14.0" />
                   </font></Button>
-                  <Label fx:id="emplyeeOutputLabel" textFill="#7affff" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Label fx:id="employeeOutputLabel" textFill="#7affff" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                   <font>
                      <Font size="14.0" />
                   </font></Label>

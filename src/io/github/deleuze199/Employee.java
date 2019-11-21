@@ -33,8 +33,8 @@ class Employee {
 
   private void setEmail(String name) {
     String firstname = name.substring(0, name.indexOf(" ")).toLowerCase();
-    String Lastname = name.substring(name.indexOf(" ") + 1).toLowerCase();
-    email = firstname + "." + Lastname + "@oracleacademy.Test";
+    String lastname = name.substring(name.indexOf(" ") + 1).toLowerCase();
+    email = firstname + "." + lastname + "@oracleacademy.Test";
   }
 
   private boolean isValidPassword(String password) {

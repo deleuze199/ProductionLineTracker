@@ -120,7 +120,7 @@ public abstract class Product implements Item {
    * @return string of the product information
    */
   public String toString() {
-    return "Name: " + name + " Manufacturer: " + manufacturer + " Type: " + type ;
+    return "Name: " + name + " Manufacturer: " + manufacturer + " Type: " + type;
   }
 }
 

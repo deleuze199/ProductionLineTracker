@@ -28,7 +28,8 @@ class ProductionRecord {
    *
    * @param productID correspond to the productID from the Product table
    */
-  ProductionRecord(int productionNumber, int productID, String serialNumber, java.sql.Date dateProduced) {
+  ProductionRecord(
+      int productionNumber, int productID, String serialNumber, java.sql.Date dateProduced) {
     this.productionNumber = productionNumber;
     this.productID = productID;
     this.serialNumber = serialNumber;

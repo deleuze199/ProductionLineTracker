@@ -1,10 +1,11 @@
 .root{
     -fx-base:darkslategray;
 }
+
 .label {
     -fx-text-fill: #00ff00;
 }
+
 .table-cell, .list-cell, .text-area{
-    -fx-text-fill: #1B00A5
-;
+    -fx-text-fill: #1B00A5;
 }

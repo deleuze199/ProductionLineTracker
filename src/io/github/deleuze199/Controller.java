@@ -113,6 +113,7 @@ public class Controller {
    */
   public void loadProductList() {
     try {
+      setupDB();
       // SQL String to add a product to the database
       String sql = "SELECT * FROM PRODUCT";
       PreparedStatement preparedStmt = conn.prepareStatement(sql);
@@ -154,6 +155,7 @@ public class Controller {
    */
   public void loadProductionLog() {
     try {
+      setupDB();
       // SQL String to add a product to the database
       String sql = "SELECT * FROM PRODUCTIONRECORD";
       PreparedStatement preparedStmt = conn.prepareStatement(sql);

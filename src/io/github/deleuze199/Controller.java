@@ -46,7 +46,6 @@ public class Controller {
   String db_Url;
   String user;
   String pass;
-
   Connection conn;
   ResultSet rs;
   ObservableList<Product> productLine;
@@ -191,24 +190,36 @@ public class Controller {
    */
   public void recordProductionBtnHandler() {
     Product product = produceListLV.getSelectionModel().getSelectedItem();
-    int itemCount = Integer.parseInt(comboBox.getValue());
-    if (product != null || itemCount != 0) {
-      if (product != null) {
-        if (itemCount != 0) {
-          ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+    int itemCount;
+    try {
+      itemCount = Integer.parseInt(comboBox.getValue());
+      if (product != null || itemCount != 0) {
+        if (product != null) {
           if (itemCount != 0) {
+            ArrayList<ProductionRecord> productionRun = new ArrayList<>();
             for (int i = (itemCount - 1); i >= 0; i--) {
               ProductionRecord pr = new ProductionRecord(product, (itemCount - i));
               productionRun.add(pr);
             }
             addToProductionDB(productionRun);
             loadProductionLog();
+          } else {
+            System.out.println("Produce tab's Quantity invalid");
+            try {
+              FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PQuantityError.fxml"));
+              Parent root1 = fxmlLoader.load();
+              Stage stage = new Stage();
+              stage.setScene(new Scene(root1));
+              stage.show();
+            } catch (Exception e) {
+              e.printStackTrace();
+              System.out.println("Failed To display error");
+            }
           }
         } else {
-          System.out.println("Produce tab's Quantity invalid");
+          System.out.println("Produce tab's Product invalid selected");
           try {
-            FXMLLoader fxmlLoader =
-                    new FXMLLoader(getClass().getResource("PQuantityError.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PProductError.fxml"));
             Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
@@ -219,10 +230,10 @@ public class Controller {
           }
         }
       } else {
-        System.out.println("Produce tab's Product invalid selected");
+        System.out.println("Produce tab's Product and Quantity are invalid");
         try {
           FXMLLoader fxmlLoader =
-                  new FXMLLoader(getClass().getResource("PProductError.fxml"));
+              new FXMLLoader(getClass().getResource("PQuantityProductError.fxml"));
           Parent root1 = fxmlLoader.load();
           Stage stage = new Stage();
           stage.setScene(new Scene(root1));
@@ -232,16 +243,15 @@ public class Controller {
           System.out.println("Failed To display error");
         }
       }
-    } else {
-      System.out.println("Produce tab's Product and Quantity are invalid");
+    } catch (Exception e) {
+      System.out.println("Produce tab's Quantity invalid");
       try {
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(getClass().getResource("PQuantityProductError.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PQuantityError.fxml"));
         Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));
         stage.show();
-      } catch (Exception e) {
+      } catch (Exception ex) {
         e.printStackTrace();
         System.out.println("Failed To display error");
       }
@@ -383,8 +393,7 @@ public class Controller {
         } else {
           System.out.println("Employee's Password area not filled out");
           try {
-            FXMLLoader fxmlLoader =
-                    new FXMLLoader(getClass().getResource("EPasswordError.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("EPasswordError.fxml"));
             Parent root1 = fxmlLoader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root1));
@@ -397,8 +406,7 @@ public class Controller {
       } else {
         System.out.println("Employee's Name area not filled out");
         try {
-          FXMLLoader fxmlLoader =
-                  new FXMLLoader(getClass().getResource("ENameError.fxml"));
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ENameError.fxml"));
           Parent root1 = fxmlLoader.load();
           Stage stage = new Stage();
           stage.setScene(new Scene(root1));
@@ -411,8 +419,7 @@ public class Controller {
     } else {
       System.out.println("Employee's Name and Password are not filled out");
       try {
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(getClass().getResource("ENamePasswordError.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ENamePasswordError.fxml"));
         Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));

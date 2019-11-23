@@ -18,14 +18,27 @@ public class Main extends Application {
    * Start of JavaFX program.
    *
    * @param primaryStage first thing the user sees.
-   * @throws Exception for any issue.
    */
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) {
+    try {
     Parent root = FXMLLoader.load(getClass().getResource("NewPLT.fxml"));
     primaryStage.setTitle("Production Line Tracker");
     primaryStage.setScene(new Scene(root, 600, 400));
     primaryStage.show();
+    } catch (Exception e) {
+      System.out.println("Program Failed To Load.");
+      try {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("FailedError.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+      } catch (Exception ex) {
+        System.out.println("Failed To display error");
+      }
+    }
   }
 
   /**

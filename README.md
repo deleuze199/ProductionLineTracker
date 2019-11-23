@@ -64,12 +64,12 @@ MIT License
 
 ## Key Programming Concepts Utilized
 * Inheritance - creating a subclass, of a base call, to have all of the attributes of the base class.
-* Polymorphism - using inherentance to to create a object of a base class and subclass.
-* Encapsulation - having private fields while using gets and setters to manitpuat those fields.
+* Polymorphism - using inheritance to to create a object of a base class and subclass.
+* Encapsulation - having private fields while using gets and setters to manipulate those fields.
 * Generics - used to provide meaningful type constraints to instantiated variables and objects.
 * DataBase - a used H2 database for the program.
 * Regular Expressions - used to search for pattern matching in strings.
 * Enums - special data type that has predefined constants by the class.
-* Interfaces - is a base class that sets a blue print that must be fufilled buy the subclass.
-* Abstract Classes - is similar to a Interface but the bule print does not have to be completly fulfilled.
-* Recursion - process of a function calling itself untill a base case is has been met.
+* Interfaces - is a base class that sets a blue print that must be fulfilled buy the subclass.
+* Abstract Classes - is similar to a Interface but the bule print does not have to be completely fulfilled.
+* Recursion - process of a function calling itself until a base case is has been met.

@@ -21,9 +21,9 @@ import javafx.stage.Stage;
  * This is the Controller Class for the UI part of the program.
  *
  * @author Benjamin Deleuze
- * @version a.1.0 9/21/2019
+ * @version a.3.0 11/23/2019
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
 public class Controller {
   // <editor-fold desc="FXML Fields">
   @FXML private ComboBox<String> comboBox;

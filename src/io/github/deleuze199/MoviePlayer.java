@@ -52,9 +52,10 @@ public class MoviePlayer extends Product implements MultimediaControl {
   }
 
   /**
-   * This method returns the screen and monitor of the products as a String.
+   * This the overridden toString method. It returns the screen and monitor of the products as a
+   * String.
    *
-   * @return String of base classes toString method, screen, and monitor
+   * @return String of base classes toString method, screen, and monitor.
    */
   @Override
   public String toString() {

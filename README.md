@@ -41,9 +41,18 @@ Sample: \[JavaDoc]\(https://pv-cop.github.io/PV-README-TEMPLATE/javadoc/index.ht
 Class Diagram <br /> 
  ![Sample Image](docs/ClassDiagram.png)
  
+ ## Built With
+
+* IntelliJ IDEA  
+* SceneBuilder
+
+## Contributing
+
+Create table in database to store employee information inorder to keep track of which employee edited to logs.
+
  
- 
- 
+ ## Author
+Benjamin Deleuze
  
  
  

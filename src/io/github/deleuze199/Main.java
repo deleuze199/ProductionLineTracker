@@ -22,15 +22,14 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) {
     try {
-    Parent root = FXMLLoader.load(getClass().getResource("NewPLT.fxml"));
-    primaryStage.setTitle("Production Line Tracker");
-    primaryStage.setScene(new Scene(root, 600, 400));
-    primaryStage.show();
+      Parent root = FXMLLoader.load(getClass().getResource("NewPLT.fxml"));
+      primaryStage.setTitle("Production Line Tracker");
+      primaryStage.setScene(new Scene(root, 600, 400));
+      primaryStage.show();
     } catch (Exception e) {
       System.out.println("Program Failed To Load.");
       try {
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(getClass().getResource("FailedError.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("FailedError.fxml"));
         Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));

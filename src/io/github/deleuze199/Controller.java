@@ -474,8 +474,7 @@ public class Controller {
     } catch (IOException | ClassNotFoundException | SQLException e) {
       System.out.println("Failed To Connect To DataBase.");
       try {
-        FXMLLoader fxmlLoader =
-                new FXMLLoader(getClass().getResource("DBError.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("DBError.fxml"));
         Parent root1 = fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));

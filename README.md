@@ -1,4 +1,32 @@
 
+# Production Line Tracker
+**Scenario**
+
+You have been hired to create software for a media player production facility that will keep track of what products are produced. Without the software, workers on the production floor are physically producing items and having to write down what is produced in a production log book. Management would like the production tracking to be more automated so the workers don't need to spend as much time recording what was produced, the log will be more accurate, and it will be easier to generate production reports. In addition to the ability to record production, the software also needs the ability to add to the product line (the catalog of products that are able to be produced).
+-   **Goals** (high level intended outcomes; for software, a Product Backlog)
+    -  Allow a user to add new products that are able to be produced and store them in a collection.
+    - The collection of products that can be produced can be displayed at any time.
+    - Allow a user to track production of products, including specifying how many items of that product were created. The program will then create a record for each of these items and store them in a collection.
+     - The collection of created items can be displayed at any time.
+     - Production statistics can be displayed – Total items produced, number of each item type, the number of unique products created etc.
+     -  Employee accounts can be made.
+     - Allow easy modification to handle different products.
+-   **Constraints** (externally imposed limitations on system requirements, design, or implementation or on the process used to develop or modify a system)
+    -   The program will be a GUI database program written in Java.
+    -   The program must be flexible to allow for future expansion.
+    -   Code should be saved to a private GitHub repository.
+    -   Follow best practices for style, documentation, and quality.
+-   **Timelines** (a breakdown of the Product Backlog into time-bound smaller, more detailed tasks in Sprint Backlogs)
+    -   Three 5-week sprints.
+
+## Demonstration
+
+
+
+
+
+
+
 ## 
 
 Problem Statement

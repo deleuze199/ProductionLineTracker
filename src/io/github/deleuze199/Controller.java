@@ -53,22 +53,32 @@ public class Controller {
    * This method inserts added product into database and calls loadProductList.
    */
   public void productLineButtonHandler() {
-    try {
-      setupDB();
-      // SQL String to add a product to the database
-      final String insertProductLine =
-          "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
-      PreparedStatement preparedStmt = conn.prepareStatement(insertProductLine);
-      preparedStmt.setString(1, choiceBox.getValue().code());
-      preparedStmt.setString(2, manufacturerTF.getText());
-      preparedStmt.setString(3, productNameTF.getText());
-      // Execute SQL string
-      preparedStmt.execute();
-      loadProductList();
-      conn.close();
-      preparedStmt.close();
-    } catch (SQLException e) {
-      e.printStackTrace();
+    String manufacturer = manufacturerTF.getText().trim();
+    String productName = productNameTF.getText().trim();
+    if (choiceBox.getValue() != null) {
+      if (!(manufacturer.equals("") || productName.equals(""))) {
+        try {
+          setupDB();
+          // SQL String to add a product to the database
+          final String insertProductLine =
+              "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
+          PreparedStatement preparedStmt = conn.prepareStatement(insertProductLine);
+          preparedStmt.setString(1, choiceBox.getValue().code());
+          preparedStmt.setString(2, manufacturer);
+          preparedStmt.setString(3, productName);
+          // Execute SQL string
+          preparedStmt.execute();
+          loadProductList();
+          conn.close();
+          preparedStmt.close();
+        } catch (SQLException e) {
+          e.printStackTrace();
+        }
+      } else {
+        System.out.println("Product Line Text Areas not Properly filled out");
+      }
+    } else {
+      System.out.println("Product Line Item Type not Properly filled out");
     }
   }
 
@@ -82,15 +92,22 @@ public class Controller {
   public void recordProductionBtnHandler() {
     Product product = produceListLV.getSelectionModel().getSelectedItem();
     int itemCount = Integer.parseInt(comboBox.getValue());
-    ArrayList<ProductionRecord> productionRun = new ArrayList<>();
-    if (itemCount != 0) {
-      for (int i = (itemCount - 1); i >= 0; i--) {
-        ProductionRecord pr = new ProductionRecord(product, (itemCount - i));
-        productionRun.add(pr);
+    if (product != null) {
+      if (itemCount != 0) {
+        ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+        if (itemCount != 0) {
+          for (int i = (itemCount - 1); i >= 0; i--) {
+            ProductionRecord pr = new ProductionRecord(product, (itemCount - i));
+            productionRun.add(pr);
+          }
+          addToProductionDB(productionRun);
+          loadProductionLog();
+        }
+      } else {
+        System.out.println("invalid Quantity");
       }
-      addToProductionDB(productionRun);
-      loadProductionLog();
-      showProduction();
+    } else {
+      System.out.println("invalid product selected");
     }
   }
 
@@ -118,6 +135,7 @@ public class Controller {
       String sql = "SELECT * FROM PRODUCT";
       PreparedStatement preparedStmt = conn.prepareStatement(sql);
       rs = preparedStmt.executeQuery();
+      productLine.clear();
       while (rs.next()) {
         String productName = rs.getString("NAME");
         String productManufacturer = rs.getString("MANUFACTURER");
@@ -160,6 +178,8 @@ public class Controller {
       String sql = "SELECT * FROM PRODUCTIONRECORD";
       PreparedStatement preparedStmt = conn.prepareStatement(sql);
       rs = preparedStmt.executeQuery();
+      prArrayList.clear();
+      productionLogTA.clear();
       while (rs.next()) {
         int productNum = rs.getInt("PRODUCTION_NUM");
         int productId = rs.getInt("PRODUCT_ID");
@@ -168,9 +188,8 @@ public class Controller {
         ProductionRecord pr =
             new ProductionRecord(productNum, productId, productSerialNum, productDate);
         prArrayList.add(pr);
-        // productionLogTA.setText(pr.toString());
-        showProduction();
       }
+      showProduction();
     } catch (SQLException e) {
       e.printStackTrace();
     }
@@ -217,8 +236,22 @@ public class Controller {
    * the employeeOutputLabel the the object.toString function.
    */
   public void employeeCreateBtHandler() {
-    Employee employee = new Employee(employeeNameTF.getText(), employeePasswordTF.getText());
-    employeeOutputLabel.setText(employee.toString());
+    String employeeName = employeeNameTF.getText().trim();
+    String employeePassword = employeePasswordTF.getText().trim();
+    if (!employeeName.equals("") || !employeePassword.equals("")) {
+      if (!employeeName.equals("")) {
+        if (!employeePassword.equals("")) {
+          Employee employee = new Employee(employeeNameTF.getText(), employeePasswordTF.getText());
+          employeeOutputLabel.setText(employee.toString());
+        } else {
+          System.out.println("Password area not filled out");
+        }
+      } else {
+        System.out.println("Name area not filled out");
+      }
+    } else {
+      System.out.println("Both Name and Password are not filled out");
+    }
   }
 
   /**
@@ -240,9 +273,9 @@ public class Controller {
     }
     // populate numbers 1-10 in the ComboBox
     comboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "10");
-    comboBox.getSelectionModel().selectFirst();
     // makes ComboBox editable
     comboBox.setEditable(true);
+    comboBox.getSelectionModel().select(4);
   }
 
   /** The setupDB method sets all of the credentials needed to access the database. */

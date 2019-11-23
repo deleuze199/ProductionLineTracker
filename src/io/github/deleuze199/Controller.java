@@ -41,7 +41,6 @@ public class Controller {
   @FXML private TextField employeePasswordTF;
   @FXML private Label employeeOutputLabel;
   // </editor-fold>
-
   String Jdbc_Driver;
   String db_Url;
   String user;

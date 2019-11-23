@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  * @author Benjamin Deleuze
  * @version a.3.0 11/23/2019
  */
-@SuppressWarnings({"WeakerAccess", "ConstantConditions"})
+@SuppressWarnings({"WeakerAccess", "Annotator"})
 public class Controller {
   // <editor-fold desc="FXML Fields">
   @FXML private ComboBox<String> comboBox;
@@ -188,6 +188,7 @@ public class Controller {
    * productionRun to an addToProductionDB method, calls loadProductionLog, and calls
    * showProduction.
    */
+  @SuppressWarnings("DuplicatedCode")
   public void recordProductionBtnHandler() {
     Product product = produceListLV.getSelectionModel().getSelectedItem();
     int itemCount;
@@ -204,7 +205,7 @@ public class Controller {
             addToProductionDB(productionRun);
             loadProductionLog();
           } else {
-            System.out.println("Produce tab's Quantity invalid");
+            System.out.println("Produce tab's Quantity is 0");
             try {
               FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PQuantityError.fxml"));
               Parent root1 = fxmlLoader.load();

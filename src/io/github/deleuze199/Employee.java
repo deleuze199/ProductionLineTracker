@@ -9,6 +9,7 @@ package io.github.deleuze199;
  */
 class Employee {
 
+  // The employee's credentials.
   private StringBuilder name;
   private String username;
   private String password;

@@ -8,6 +8,7 @@ package io.github.deleuze199;
  */
 @SuppressWarnings("unused")
 public abstract class Product implements Item {
+  // The product's specifications.
   private int id;
   private ItemType type;
   private String manufacturer;

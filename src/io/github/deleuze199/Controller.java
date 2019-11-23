@@ -41,13 +41,16 @@ public class Controller {
   @FXML private TextField employeePasswordTF;
   @FXML private Label employeeOutputLabel;
   // </editor-fold>
+  // The database's credentials
   String Jdbc_Driver;
   String db_Url;
   String user;
   String pass;
   Connection conn;
   ResultSet rs;
+  // list of products created
   ObservableList<Product> productLine;
+  // list of products recorded
   final ArrayList<ProductionRecord> prArrayList = new ArrayList<>();
 
   /**

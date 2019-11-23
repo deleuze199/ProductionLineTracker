@@ -6,6 +6,7 @@ import java.sql.Date;
 @SuppressWarnings("ALL")
 class ProductionRecord {
 
+  // The recorded product's specifications.
   private int productionNumber;
   private int productID;
   private String serialNumber;

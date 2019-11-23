@@ -63,6 +63,7 @@ MIT License
 * Nicholas Hansen helped with css
 
 ## Key Programming Concepts Utilized
+* Enums
 
 This section would not necessarily be in a real README.  <br />
 It is a reference for you and a place to impress potential employers with your knowledge. 

@@ -80,10 +80,10 @@ public class Controller {
                     e.printStackTrace();
                   }
                 } else {
-                  System.out.println("Product Line Item Type not Properly filled out");
+                  System.out.println("Product Line Item Type not filled out");
                 }
               } else {
-                System.out.println("Product Line Manufacture not filled out");
+                System.out.println("Product Line Manufacturer not filled out");
               }
             } else {
               System.out.println("Product Line Product Name not filled out");

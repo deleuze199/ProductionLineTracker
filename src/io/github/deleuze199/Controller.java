@@ -112,22 +112,26 @@ public class Controller {
   public void recordProductionBtnHandler() {
     Product product = produceListLV.getSelectionModel().getSelectedItem();
     int itemCount = Integer.parseInt(comboBox.getValue());
-    if (product != null) {
-      if (itemCount != 0) {
-        ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+    if (product != null || itemCount != 0) {
+      if (product != null) {
         if (itemCount != 0) {
-          for (int i = (itemCount - 1); i >= 0; i--) {
-            ProductionRecord pr = new ProductionRecord(product, (itemCount - i));
-            productionRun.add(pr);
+          ArrayList<ProductionRecord> productionRun = new ArrayList<>();
+          if (itemCount != 0) {
+            for (int i = (itemCount - 1); i >= 0; i--) {
+              ProductionRecord pr = new ProductionRecord(product, (itemCount - i));
+              productionRun.add(pr);
+            }
+            addToProductionDB(productionRun);
+            loadProductionLog();
           }
-          addToProductionDB(productionRun);
-          loadProductionLog();
+        } else {
+          System.out.println("Produce tab's Quantity invalid");
         }
       } else {
-        System.out.println("invalid Quantity");
+        System.out.println("Produce tab's Product invalid selected");
       }
     } else {
-      System.out.println("invalid product selected");
+      System.out.println("Produce tab's Product and Quantity are invalid");
     }
   }
 
@@ -264,13 +268,13 @@ public class Controller {
           Employee employee = new Employee(employeeNameTF.getText(), employeePasswordTF.getText());
           employeeOutputLabel.setText(employee.toString());
         } else {
-          System.out.println("Password area not filled out");
+          System.out.println("Employee's Password area not filled out");
         }
       } else {
-        System.out.println("Name area not filled out");
+        System.out.println("Employee's Name area not filled out");
       }
     } else {
-      System.out.println("Both Name and Password are not filled out");
+      System.out.println("Employee's Name and Password are not filled out");
     }
   }
 

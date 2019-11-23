@@ -55,16 +55,7 @@ Benjamin Deleuze
  
  ## License
 
-Public repositories on GitHub are often used to share open source software. For your repository to truly be open source, you'll need to license it so that others are free to use, change, and distribute the software. https://help.github.com/articles/licensing-a-repository/ <br />
-You have the option to choose a license when you first create your repository. </br>
-If you need to create a license for an existing repository...
-1. Go to your repository.
-2. Click on "Create new file" Button.
-3. Type the file name as License.txt or License.md in the input box next to your repository name, a drop down button appears towards right side.
-4. Choose the type of license of your choice.
-5. Click "Commit new file" button at the bottom (Green button)
-Credit https://stackoverflow.com/questions/31639059/how-to-add-license-to-an-existing-github-project <br />
-To choose a license, see https://choosealicense.com/ 
+MIT
 
 ## Acknowledgments
 

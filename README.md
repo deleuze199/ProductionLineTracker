@@ -20,9 +20,13 @@ You have been hired to create software for a media player production facility th
     -   Three 5-week sprints.
 
 ## Demonstration
-![Sample GIF](docs/ProductLineTrackergit.git)
+Add Product to Tracker
 
+![Sample GIF](docs/AddProductGif.gif)
 
+Recording Production of Product
+
+![Sample GIF](docs/RecordProductionGif.gif)
 
 
 

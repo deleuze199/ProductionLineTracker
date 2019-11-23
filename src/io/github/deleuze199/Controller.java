@@ -10,8 +10,12 @@ import java.util.Properties;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * This is the Controller Class for the UI part of the program.
@@ -55,6 +59,7 @@ public class Controller {
   public void productLineButtonHandler() {
     String manufacturer = manufacturerTF.getText().trim();
     String productName = productNameTF.getText().trim();
+    // if statements are made so error messages can appear if field(s) nt correctly filled put
     if (choiceBox.getValue() != null || !productName.equals("") || !manufacturer.equals("")) {
       if (!productName.equals("") || !manufacturer.equals("")) {
         if (choiceBox.getValue() != null || !productName.equals("")) {
@@ -81,24 +86,99 @@ public class Controller {
                   }
                 } else {
                   System.out.println("Product Line Item Type not filled out");
+                  try {
+                    FXMLLoader fxmlLoader =
+                        new FXMLLoader(getClass().getResource("PLItemTypeError.fxml"));
+                    Parent root1 = fxmlLoader.load();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root1));
+                    stage.show();
+                  } catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("Failed To display error");
+                  }
                 }
               } else {
                 System.out.println("Product Line Manufacturer not filled out");
+                try {
+                  FXMLLoader fxmlLoader =
+                      new FXMLLoader(getClass().getResource("PLManufacturerError.fxml"));
+                  Parent root1 = fxmlLoader.load();
+                  Stage stage = new Stage();
+                  stage.setScene(new Scene(root1));
+                  stage.show();
+                } catch (Exception e) {
+                  e.printStackTrace();
+                  System.out.println("Failed To display error");
+                }
               }
             } else {
               System.out.println("Product Line Product Name not filled out");
+              try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PLNameError.fxml"));
+                Parent root1 = fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root1));
+                stage.show();
+              } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("Failed To display error");
+              }
             }
           } else {
             System.out.println("Product Line Product Manufacturer and Item Type not filled out");
+            try {
+              FXMLLoader fxmlLoader =
+                  new FXMLLoader(getClass().getResource("PLManufacturerItemTypeError.fxml"));
+              Parent root1 = fxmlLoader.load();
+              Stage stage = new Stage();
+              stage.setScene(new Scene(root1));
+              stage.show();
+            } catch (Exception e) {
+              e.printStackTrace();
+              System.out.println("Failed To display error");
+            }
           }
         } else {
           System.out.println("Product Line Product Name and Item Type not filled out");
+          try {
+            FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("PLNameItemTypeError.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+          } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed To display error");
+          }
         }
       } else {
         System.out.println("Product Line Product Name and Manufacture not filled out");
+        try {
+          FXMLLoader fxmlLoader =
+              new FXMLLoader(getClass().getResource("PLNameManufacturerError.fxml"));
+          Parent root1 = fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.setScene(new Scene(root1));
+          stage.show();
+        } catch (Exception e) {
+          e.printStackTrace();
+          System.out.println("Failed To display error");
+        }
       }
     } else {
       System.out.println("All of Product Line fields not filled out");
+      try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PLAllFieldsError.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+      } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Failed To display error");
+      }
     }
   }
 
@@ -126,12 +206,45 @@ public class Controller {
           }
         } else {
           System.out.println("Produce tab's Quantity invalid");
+          try {
+            FXMLLoader fxmlLoader =
+                    new FXMLLoader(getClass().getResource("PQuantityError.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+          } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed To display error");
+          }
         }
       } else {
         System.out.println("Produce tab's Product invalid selected");
+        try {
+          FXMLLoader fxmlLoader =
+                  new FXMLLoader(getClass().getResource("PProductError.fxml"));
+          Parent root1 = fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.setScene(new Scene(root1));
+          stage.show();
+        } catch (Exception e) {
+          e.printStackTrace();
+          System.out.println("Failed To display error");
+        }
       }
     } else {
       System.out.println("Produce tab's Product and Quantity are invalid");
+      try {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("PQuantityProductError.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+      } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Failed To display error");
+      }
     }
   }
 
@@ -269,12 +382,45 @@ public class Controller {
           employeeOutputLabel.setText(employee.toString());
         } else {
           System.out.println("Employee's Password area not filled out");
+          try {
+            FXMLLoader fxmlLoader =
+                    new FXMLLoader(getClass().getResource("EPasswordError.fxml"));
+            Parent root1 = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+          } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed To display error");
+          }
         }
       } else {
         System.out.println("Employee's Name area not filled out");
+        try {
+          FXMLLoader fxmlLoader =
+                  new FXMLLoader(getClass().getResource("ENameError.fxml"));
+          Parent root1 = fxmlLoader.load();
+          Stage stage = new Stage();
+          stage.setScene(new Scene(root1));
+          stage.show();
+        } catch (Exception e) {
+          e.printStackTrace();
+          System.out.println("Failed To display error");
+        }
       }
     } else {
       System.out.println("Employee's Name and Password are not filled out");
+      try {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("ENamePasswordError.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+      } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("Failed To display error");
+      }
     }
   }
 

@@ -472,7 +472,18 @@ public class Controller {
       // Create a connection to database
       conn = DriverManager.getConnection(db_Url, user, reverseString(pass));
     } catch (IOException | ClassNotFoundException | SQLException e) {
-      System.out.println("NO GO");
+      System.out.println("Failed To Connect To DataBase.");
+      try {
+        FXMLLoader fxmlLoader =
+                new FXMLLoader(getClass().getResource("DBError.fxml"));
+        Parent root1 = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+      } catch (Exception ex) {
+        e.printStackTrace();
+        System.out.println("Failed To display error");
+      }
     }
   }
 

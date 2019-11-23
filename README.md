@@ -38,8 +38,7 @@ Sample: \[JavaDoc]\(https://pv-cop.github.io/PV-README-TEMPLATE/javadoc/index.ht
 
 ## Diagrams
 
-class diagram. <br /> 
-The markdown is  \!\[Alt text\]\(relative/path/to/img.png) <br />
+Class Diagram <br /> 
  ![Sample Image](docs/ClassDiagram.png)
  
  

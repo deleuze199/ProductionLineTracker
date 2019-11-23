@@ -63,9 +63,13 @@ MIT License
 * Nicholas Hansen helped with css
 
 ## Key Programming Concepts Utilized
+* Inheritance
+* Polymorphism
+* Encapsulation
+* DataBase
+* Regular Expressions
+* Lists and ArrayLists
 * Enums
-
-This section would not necessarily be in a real README.  <br />
-It is a reference for you and a place to impress potential employers with your knowledge. 
-Identify what concepts you utilize so when you need to use them again you will know that you will find them here. Include a brief description of the concepts in your own words to help you prepare for related interview questions. 
-
+* Interfaces
+* Abstract Classes
+* Recursion

@@ -55,30 +55,50 @@ public class Controller {
   public void productLineButtonHandler() {
     String manufacturer = manufacturerTF.getText().trim();
     String productName = productNameTF.getText().trim();
-    if (choiceBox.getValue() != null) {
-      if (!(manufacturer.equals("") || productName.equals(""))) {
-        try {
-          setupDB();
-          // SQL String to add a product to the database
-          final String insertProductLine =
-              "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
-          PreparedStatement preparedStmt = conn.prepareStatement(insertProductLine);
-          preparedStmt.setString(1, choiceBox.getValue().code());
-          preparedStmt.setString(2, manufacturer);
-          preparedStmt.setString(3, productName);
-          // Execute SQL string
-          preparedStmt.execute();
-          loadProductList();
-          conn.close();
-          preparedStmt.close();
-        } catch (SQLException e) {
-          e.printStackTrace();
+    if (choiceBox.getValue() != null || !productName.equals("") || !manufacturer.equals("")) {
+      if (!productName.equals("") || !manufacturer.equals("")) {
+        if (choiceBox.getValue() != null || !productName.equals("")) {
+          if (choiceBox.getValue() != null || !manufacturer.equals("")) {
+            if (!productName.equals("")) {
+              if (!manufacturer.equals("")) {
+                if (choiceBox.getValue() != null) {
+                  try {
+                    setupDB();
+                    // SQL String to add a product to the database
+                    final String insertProductLine =
+                        "INSERT INTO Product(type, manufacturer, name) VALUES ( ?,?,?)";
+                    PreparedStatement preparedStmt = conn.prepareStatement(insertProductLine);
+                    preparedStmt.setString(1, choiceBox.getValue().code());
+                    preparedStmt.setString(2, manufacturer);
+                    preparedStmt.setString(3, productName);
+                    // Execute SQL string
+                    preparedStmt.execute();
+                    loadProductList();
+                    conn.close();
+                    preparedStmt.close();
+                  } catch (SQLException e) {
+                    e.printStackTrace();
+                  }
+                } else {
+                  System.out.println("Product Line Item Type not Properly filled out");
+                }
+              } else {
+                System.out.println("Product Line Manufacture not filled out");
+              }
+            } else {
+              System.out.println("Product Line Product Name not filled out");
+            }
+          } else {
+            System.out.println("Product Line Product Manufacturer and Item Type not filled out");
+          }
+        } else {
+          System.out.println("Product Line Product Name and Item Type not filled out");
         }
       } else {
-        System.out.println("Product Line Text Areas not Properly filled out");
+        System.out.println("Product Line Product Name and Manufacture not filled out");
       }
     } else {
-      System.out.println("Product Line Item Type not Properly filled out");
+      System.out.println("All of Product Line fields not filled out");
     }
   }
 

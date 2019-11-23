@@ -69,7 +69,7 @@ To choose a license, see https://choosealicense.com/
 ## Acknowledgments
 
 * https://www.w3schools.com/sql/
-* Nicholas Hansen elped with css
+* Nicholas Hansen helped with css
 
 ## Key Programming Concepts Utilized
 

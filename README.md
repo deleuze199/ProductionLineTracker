@@ -55,7 +55,7 @@ Benjamin Deleuze
  
  ## License
 
-MIT
+MIT License
 
 ## Acknowledgments
 

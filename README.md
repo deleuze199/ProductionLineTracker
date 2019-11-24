@@ -36,7 +36,7 @@ Do not include the docs folder name in your URL. <br />
 Sample: \[JavaDoc]\(https://pv-cop.github.io/PV-README-TEMPLATE/javadoc/index.html) <br /> <br />
 [JavaDoc](https://pv-cop.github.io/PV-README-TEMPLATE/javadoc/index.html)
 
-[JavaDoc](https://deleuze199docs/ProductionLineTracker/javadoc/index.html)
+[JavaDoc](https://deleuze199.github.io/ProductionLineTracker/javadoc/index.html)
 
 ## Diagrams
 

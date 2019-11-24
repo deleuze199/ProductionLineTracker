@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  * @author Benjamin Deleuze
  * @version a.3.0 11/23/2019
  */
-@SuppressWarnings({"WeakerAccess", "Annotator"})
+@SuppressWarnings({"WeakerAccess", "Annotator", "RedundantSuppression"})
 public class Controller {
   // <editor-fold desc="FXML Fields">
   @FXML private ComboBox<String> comboBox;

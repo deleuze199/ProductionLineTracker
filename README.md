@@ -1,6 +1,5 @@
 
 # Production Line Tracker
-**Scenario**
 This program is made for a media player production facility that will keep track of what products are produced. The works would like the production tracking to be more automated so the they don't need to spend as much time recording what was produced on paper, the log will be more accurate, and it will be easier to generate production reports. In addition to the ability to record production, the software also have the ability to add to the product line (the catalog of products that are able to be produced).
 -   **Goals** (high level intended outcomes; for software, a Product Backlog)
     - Allow a user to add new products that are able to be produced and store them in a collection.
